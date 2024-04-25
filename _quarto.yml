@@ -9,13 +9,18 @@ website:
       - href: index.qmd
         text: Home
       - about.qmd
+  page-footer:
+    background: light # or dark
+    left:
+      - "Copyright 2024, Kaija Gahm"
+    right:
+      - icon: github
+        href: https://github.com/kaijagahm
 
 format:
   html:
     theme: sandstone
-    css: styles.css
+    css: mystyle.scss
     toc: true
     page-layout: full
-
-
-
+  
