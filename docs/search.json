@@ -9,8 +9,29 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "kaijagahm.github.io",
+    "title": "Kaija Gahm",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+    "text": "Here is a test paragraph introduction. I don’t know why this is still displaying as scrollable instead of side by side…"
+  },
+  {
+    "objectID": "index.html#hi-there",
+    "href": "index.html#hi-there",
+    "title": "Kaija Gahm",
+    "section": "",
+    "text": "Here is a test paragraph introduction. I don’t know why this is still displaying as scrollable instead of side by side…"
+  },
+  {
+    "objectID": "index.html#education",
+    "href": "index.html#education",
+    "title": "Kaija Gahm",
+    "section": "Education",
+    "text": "Education\n\nsome stuff about my education"
+  },
+  {
+    "objectID": "index.html#experience",
+    "href": "index.html#experience",
+    "title": "Kaija Gahm",
+    "section": "Experience",
+    "text": "Experience\n\nsome stuff about my experience"
   }
 ]

@@ -1,7 +1,23 @@
 ---
-title: "kaijagahm.github.io"
+title: "Kaija Gahm"
+image: headshot.jpg
+toc: false
+about: 
+  template: solana
+  image-shape: rounded
+  image-width: 20em
+  links:
+    - text: GitHub
+      href: github.com/kaijagahm
+    - text: Email
+      href: mailto:kgahm@g.ucla.edu
 ---
 
-This is a Quarto website.
+## Hi there!
+Here is a test paragraph introduction. I don't know why this is still displaying as scrollable instead of side by side...
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+## Education
+- some stuff about my education
+
+## Experience
+- some stuff about my experience
