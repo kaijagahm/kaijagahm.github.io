@@ -1,4 +1,7 @@
-/* -- scss defaults --*/
+/*-- scss:defaults --*/
+
+// Import fonts
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
 
 // Colors
 $blackish: #232322;
@@ -10,17 +13,18 @@ $pink: #ECA7CB;
 $lightpink: #F5D1E4;
 
 // Base document colors
-$navbar-bg: $platinum; //navbar
-$navbar-fg: $darkmoss; // navbar foreground elements
-$navbar-hl: $magenta; // highlight color when hovering over navbar links
-$body-bg: $lightpink; // page background
+$navbar-bg: $darkmoss; //navbar
+$navbar-fg: $platinum; // navbar foreground elements
+$navbar-hl: $moss; // highlight color when hovering over navbar links
+$body-bg: $platinum; // page background
 $body-color: $blackish; //page text
 $footer-bg: $magenta; // footer
+$footer-fg: $lightpink; //footer foreground elements
 $link-color: $magenta; // hyperlinks
 
 // Inline code
-$code-bg: $platinum; // inline code background color
-$code-color: $darkmoss; //inline code text color
+// inline code background color defaults to a mix between the body-bg (platinum) and body-color (blackish)
+// inline code text defaults to a generated contrasting color against the code-bg
 
 // Code blocks
 $code-block-bg: $platinum; // code block background color
@@ -28,10 +32,19 @@ $code-block-bg: $platinum; // code block background color
 /*-- use vars in CSS rules (we'll learn more about how to write CSS soon!) --*/
 h1 {
   font-color: $blackish;
+  font-family: 'PW Smokey';
 }
 
 .button-styling {
   background: $darkmoss;
   color: $moss; 
   border-color: $blackish;
+}
+
+/* pw smokey */
+@font-face {
+  font-family: 'PW Smokey';
+  src: local('PW Smokey'), url('fonts/PWSmokey.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
