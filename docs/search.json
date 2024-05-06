@@ -11,14 +11,21 @@
     "href": "index.html",
     "title": "Kaija Gahm",
     "section": "",
-    "text": "I am a biologist and data scientist. Currently, I’m studying the social behavior and movement ecology of griffon vultures in the Pinter-Wollman Lab. Previously, I was a data manager at the Cary Institute and a research assistant with the Yale Grammatical Diversity Project. I’ve written about my work with each of these organizations: Cary | YGDP.\nI did my B.S. in EEB at Yale, where I studied physiological tradeoffs in wood frog tadpoles (talk | r xfun::embed_file(text = \"paper\", 'files/Gahm_etal_2020.pdf')).\nI’m interested in advocating for open and reproducible data science and helping others to apply these ideas to their own work. I run “Hacky Hours” at UCLA, and I’m on the Board of Directors for SORTEE."
+    "text": "I am a biologist and data scientist. Currently, I’m studying the social behavior and movement ecology of griffon vultures in the Pinter-Wollman Lab. Previously, I was a data manager at the Cary Institute and a research assistant with the Yale Grammatical Diversity Project. I’ve written about my work with each of these organizations: Cary | YGDP.\nI did my B.S. in EEB at Yale, where I studied physiological tradeoffs in wood frog tadpoles (talk | paper).\nI’m interested in advocating for open and reproducible data science and helping others to apply these ideas to their own work. I run “Hacky Hours” at UCLA, and I’m on the Board of Directors for SORTEE. I teach workshops with The Carpentries, and I’m currently developing a Carpentries workshop of my own!"
   },
   {
-    "objectID": "index.html#hi-there",
-    "href": "index.html#hi-there",
+    "objectID": "index.html#bio",
+    "href": "index.html#bio",
     "title": "Kaija Gahm",
     "section": "",
-    "text": "Here is a test paragraph introduction. I don’t know why this is still displaying as scrollable instead of side by side…"
+    "text": "I am a biologist and data scientist. Currently, I’m studying the social behavior and movement ecology of griffon vultures in the Pinter-Wollman Lab. Previously, I was a data manager at the Cary Institute and a research assistant with the Yale Grammatical Diversity Project. I’ve written about my work with each of these organizations: Cary | YGDP.\nI did my B.S. in EEB at Yale, where I studied physiological tradeoffs in wood frog tadpoles (talk | paper).\nI’m interested in advocating for open and reproducible data science and helping others to apply these ideas to their own work. I run “Hacky Hours” at UCLA, and I’m on the Board of Directors for SORTEE. I teach workshops with The Carpentries, and I’m currently developing a Carpentries workshop of my own!"
+  },
+  {
+    "objectID": "index.html#cv",
+    "href": "index.html#cv",
+    "title": "Kaija Gahm",
+    "section": "CV",
+    "text": "CV\nYou can download a recent copy of my CV here."
   },
   {
     "objectID": "index.html#education",
@@ -26,27 +33,6 @@
     "title": "Kaija Gahm",
     "section": "Education",
     "text": "Education\nUniversity of California, Los Angeles | Los Angeles, CA Ph.D. Student in Ecology & Evolutionary Biology | September 2021 - Present. NSF Graduate Research Fellow 2023; UCLA Graduate Dean’s Research Fellow 2021.\nYale University | New Haven, CT | B.S. in Ecology & Evolutionary Biology | September 2016 - May 2020"
-  },
-  {
-    "objectID": "index.html#experience",
-    "href": "index.html#experience",
-    "title": "Kaija Gahm",
-    "section": "Experience",
-    "text": "Experience\n\nsome stuff about my experience"
-  },
-  {
-    "objectID": "index.html#bio",
-    "href": "index.html#bio",
-    "title": "Kaija Gahm",
-    "section": "",
-    "text": "I am a biologist and data scientist. Currently, I’m studying the social behavior and movement ecology of griffon vultures in the Pinter-Wollman Lab. Previously, I was a data manager at the Cary Institute and a research assistant with the Yale Grammatical Diversity Project. I’ve written about my work with each of these organizations: Cary | YGDP.\nI did my B.S. in EEB at Yale, where I studied physiological tradeoffs in wood frog tadpoles (talk | r xfun::embed_file(text = \"paper\", 'files/Gahm_etal_2020.pdf')).\nI’m interested in advocating for open and reproducible data science and helping others to apply these ideas to their own work. I run “Hacky Hours” at UCLA, and I’m on the Board of Directors for SORTEE."
-  },
-  {
-    "objectID": "index.html#cv",
-    "href": "index.html#cv",
-    "title": "Kaija Gahm",
-    "section": "CV",
-    "text": "CV\nYou can download a recent copy of my CV r xfun::embed_file(text = \"here\", 'files/Gahm_CV_April2023.pdf')."
   },
   {
     "objectID": "index.html#work",
@@ -60,6 +46,6 @@
     "href": "index.html#contact",
     "title": "Kaija Gahm",
     "section": "Contact",
-    "text": "Contact\nI’d love to hear from you! You can find me online using the links to the left, or email me at kgahm@ucla.edu."
+    "text": "Contact\nI’d love to hear from you! You can find me online using the links to the left, or email me at kgahm [at] ucla.edu."
   }
 ]

@@ -23,8 +23,8 @@ $footer-fg: $lightpink; //footer foreground elements
 $link-color: $magenta; // hyperlinks
 
 // Inline code
-// inline code background color defaults to a mix between the body-bg (platinum) and body-color (blackish)
-// inline code text defaults to a generated contrasting color against the code-bg
+$code-bg: $lightpink; // inline code background color
+$code-color: $magenta; // inline code text color
 
 // Code blocks
 $code-block-bg: $platinum; // code block background color

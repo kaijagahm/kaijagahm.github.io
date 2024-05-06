@@ -10,20 +10,20 @@ about:
     - text: GitHub
       href: github.com/kaijagahm
     - text: Email
-      href: mailto:kgahm@g.ucla.edu
+      href: mailto:kgahm@ucla.edu
 ---
 
 ## Bio
 
 I am a biologist and data scientist. Currently, I'm studying the social behavior and movement ecology of griffon vultures in the [Pinter-Wollman Lab](https://pinterwollmanlab.eeb.ucla.edu/). Previously, I was a data manager at the Cary Institute and a research assistant with the [Yale Grammatical Diversity Project](https://ygdp.yale.edu/). I've written about my work with each of these organizations: [Cary](https://kaijagahm.netlify.app/projects/2021-07-13-retroactivelyreproducible/) \| [YGDP](https://kaijagahm.netlify.app/projects/2021-02-05-ygdp-dashboard/).
 
-I did my B.S. in EEB at Yale, where I studied physiological tradeoffs in wood frog tadpoles ([talk](https://drive.google.com/file/d/1S57rDgoKSm0I4ssGYlKlMgnDmXNs58aR/view?usp=sharing) \| `r xfun::embed_file(text = "paper", 'files/Gahm_etal_2020.pdf')`).
+I did my B.S. in EEB at Yale, where I studied physiological tradeoffs in wood frog tadpoles ([talk](https://drive.google.com/file/d/1S57rDgoKSm0I4ssGYlKlMgnDmXNs58aR/view?usp=sharing) | <a href="files/Gahm_etal_2020.pdf" download>paper</a>).
 
-I'm interested in advocating for open and reproducible data science and helping others to apply these ideas to their own work. I run "Hacky Hours" at UCLA, and I'm on the Board of Directors for [SORTEE](https://sortee.org/). 
+I'm interested in advocating for open and reproducible data science and helping others to apply these ideas to their own work. I run "Hacky Hours" at UCLA, and I'm on the Board of Directors for [SORTEE](https://sortee.org/). I teach workshops with [The Carpentries](https://carpentries.org/index.html), and I'm currently developing a Carpentries workshop of my own!
 
 ## CV
 
-You can download a recent copy of my CV `r xfun::embed_file(text = "here", 'files/Gahm_CV_April2023.pdf')`.
+You can download a recent copy of my CV <a href="files/CV for ABS 2024.pdf" download>here</a>.
 
 ## Education
 
@@ -41,4 +41,4 @@ You can download a recent copy of my CV `r xfun::embed_file(text = "here", 'file
 
 ## Contact
 
-I'd love to hear from you! You can find me online using the links to the left, or email me at **kgahm@ucla.edu**.
+I'd love to hear from you! You can find me online using the links to the left, or email me at **kgahm [at] ucla.edu**.
