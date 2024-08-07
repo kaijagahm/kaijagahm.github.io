@@ -2,7 +2,7 @@
 title: "greenT part 2: Behind the app"
 description: "A more detailed explanation of some of the code that makes the greenT app work."
 author:
-  - nname: Kaija Gahm
+  - name: Kaija Gahm
     url: https://kaijagahm.github.io
     orcid: 0000-0002-4612-4426
     affiliation: Cary Institute of Ecosystem Studies
