@@ -5,7 +5,7 @@ author:
   - name: Kaija Gahm
     url: https://kaijagahm.github.io
     orcid: 0000-0002-4612-4426
-    affiliation: Cary Institute of Ecosystem Studies
+    affiliation: Yale University
 date: 02-10-2020
 categories: [R] # self-defined categories
 image: magrittr.jpg
