@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2021-05-13">
+<meta name="description" content="A more detailed explanation of some of the code that makes the greenT app work.">
+
+<title>Kaija Gahm - greenT part 2: Behind the app</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Kaija Gahm</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts.html" rel="" target="">
+ <span class="menu-text">Blog: woodpeckR</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools ms-auto">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-page-left">
+      <h1 class="title">greenT part 2: Behind the app</h1>
+                  <div>
+        <div class="description">
+          A more detailed explanation of some of the code that makes the greenT app work.
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">R</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">May 13, 2021</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#how-did-i" id="toc-how-did-i" class="nav-link active" data-scroll-target="#how-did-i">How did I:</a>
+  <ul class="collapse">
+  <li><a href="#change-the-font-across-the-entire-app" id="toc-change-the-font-across-the-entire-app" class="nav-link" data-scroll-target="#change-the-font-across-the-entire-app">Change the font across the entire app?</a></li>
+  <li><a href="#make-the-title-and-subtitle-have-two-different-formats" id="toc-make-the-title-and-subtitle-have-two-different-formats" class="nav-link" data-scroll-target="#make-the-title-and-subtitle-have-two-different-formats">Make the title and subtitle have two different formats?</a></li>
+  <li><a href="#plot-the-colored-blocks" id="toc-plot-the-colored-blocks" class="nav-link" data-scroll-target="#plot-the-colored-blocks">Plot the colored blocks?</a></li>
+  <li><a href="#change-the-color-of-the-ggplot-letters-based-on-the-rectangle-color" id="toc-change-the-color-of-the-ggplot-letters-based-on-the-rectangle-color" class="nav-link" data-scroll-target="#change-the-color-of-the-ggplot-letters-based-on-the-rectangle-color">Change the color of the ggplot letters based on the rectangle color?</a></li>
+  <li><a href="#save-the-rectangle-plot-as-an-image" id="toc-save-the-rectangle-plot-as-an-image" class="nav-link" data-scroll-target="#save-the-rectangle-plot-as-an-image">Save the rectangle plot as an image?</a></li>
+  <li><a href="#make-the-contribution-form" id="toc-make-the-contribution-form" class="nav-link" data-scroll-target="#make-the-contribution-form">Make the contribution form?</a></li>
+  <li><a href="#save-the-contributed-data-to-google-drive" id="toc-save-the-contributed-data-to-google-drive" class="nav-link" data-scroll-target="#save-the-contributed-data-to-google-drive">Save the contributed data to Google Drive?</a></li>
+  <li><a href="#work-efficiently-with-all-36-color-selectors" id="toc-work-efficiently-with-all-36-color-selectors" class="nav-link" data-scroll-target="#work-efficiently-with-all-36-color-selectors">Work efficiently with all 36 color selectors?</a></li>
+  </ul></li>
+  <li><a href="#get-involved" id="toc-get-involved" class="nav-link" data-scroll-target="#get-involved">Get involved</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+
+
+
+
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="numbers.png" class="img-fluid figure-img" width="750"></p>
+<figcaption class="figure-caption">The digits 0-9, according to my brain</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>The other day, I posted an app about grapheme-color synesthesia, called <a href="https://kaijagahm.shinyapps.io/greenT/"><strong>greenT</strong></a>. This is part 2 of a blog post about the app. Part 1 gave an introduction to the who/what/why of the app, and provided a little guided tour through each page and feature. <a href="https://kaijagahm.netlify.app/posts/2021-05-09-greent/">You can read part 1 here</a>.</p>
+<p>This post will go into more detail about some of the code in the app. If you’re interested in Shiny and want to know how I made everything work, this is the post for you. I picked a few features that were the most interesting to me, and/or the ones that I had to do the most independent troubleshooting to figure out. If you have questions about the rest of the app, get in touch via email, Twitter, or GitHub and I’ll do my best to respond!</p>
+<p>Ok, here goes.</p>
+<section id="how-did-i" class="level2">
+<h2 class="anchored" data-anchor-id="how-did-i">How did I:</h2>
+<p>Here, I’ll discuss some of the app’s parts in more detail, in the spirit of providing ever-more resources for Shiny developers. I’m going to focus on things I struggled with, because most likely, if I didn’t struggle, the answer is available on Google somewhere.</p>
+<p>Of course, you’re also welcome to look at my code, <a href="https://github.com/kaijagahm/greenT">on GitHub</a>. The main scripts are ‘app.R’ (the main app script) and ‘defs.R’ (which defines some supporting functions). Then ‘about.R’ and ‘contribute.R’ just have a lot of long text, to avoid cluttering up the main script with it.</p>
+<section id="change-the-font-across-the-entire-app" class="level3">
+<h3 class="anchored" data-anchor-id="change-the-font-across-the-entire-app">Change the font across the entire app?</h3>
+<p>Jonathan created a file called ‘tea-style.css’. It lives inside the folder ‘www/’ in the main app directory. The file path written using the <code>here</code> package is <code>here::here("www", "tea-style.css")</code>.</p>
+<section id="getting-the-font" class="level4">
+<h4 class="anchored" data-anchor-id="getting-the-font">Getting the font</h4>
+<p>Inside ‘tea-style.css’, I import the font I want to use, like this:</p>
+<p><code>@import url('https://fonts.Googleapis.com/css2?family=Baloo+2&amp;display=swap');</code></p>
+<p>That URL comes from <a href="https://fonts.Google.com/">Google Fonts</a>, which is where I found Baloo 2, the font that I decided to use. I clicked on it to see the different styles (weights, italic, etc.) and selected the one that I liked by clicking “Select this style” on the right.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="baloo.png" class="img-fluid figure-img" width="899"></p>
+<figcaption class="figure-caption">Choosing a style from the Baloo 2 font</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Clicking that + sign popped open a dialog on the right. I chose the ‘import’ option instead of <code>&lt;link&gt;</code>, and then copied the import code within the <code>&lt;style&gt;</code> tag.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="balooURL.png" class="img-fluid figure-img" width="319"></p>
+<figcaption class="figure-caption">Copying code to import Baloo</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="applying-the-font" class="level4">
+<h4 class="anchored" data-anchor-id="applying-the-font">Applying the font</h4>
+<p>Then, in the same ‘tea-style.css’ file, I added this code:</p>
+<pre><code>* {
+font-family: 'Baloo 2', sans-serif;
+}</code></pre>
+<p>The * tells css to assign that font to <em>all</em> text in the app, not just a particular class of element. The ‘sans-serif’ after the name of the font tells the app to default to a generic sans-serif font if Baloo 2 were to be unavailable. And don’t forget the semicolon at the end of the line!</p>
+</section>
+</section>
+<section id="make-the-title-and-subtitle-have-two-different-formats" class="level3">
+<h3 class="anchored" data-anchor-id="make-the-title-and-subtitle-have-two-different-formats">Make the title and subtitle have two different formats?</h3>
+<p>Gooood question. I don’t really know html and css. In this case I kind of Googled around until I found something that worked. And I completely despaired of being able to get the title to be large, so I asked Jonathan, and he showed me where to put the font size. Here’s the relevant code snippet, within the Shiny UI:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Title and subtitle, two different formats</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">titlePanel</span>(<span class="fu">div</span>(<span class="fu">HTML</span>(<span class="st">"&lt;b style = 'font-size: 30px;'&gt;greenT&lt;/b&gt;&lt;em&gt;&lt;small&gt;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="st">                    exploring grapheme-color synesthesia&lt;/em&gt;&lt;/small&gt;"</span>)),</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>           <span class="co"># windowTitle controls what shows up on the browser tab</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">windowTitle =</span> <span class="st">"greenT"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="plot-the-colored-blocks" class="level3">
+<h3 class="anchored" data-anchor-id="plot-the-colored-blocks">Plot the colored blocks?</h3>
+<p>Just some ggplot magic!</p>
+<section id="making-the-plot" class="level4">
+<h4 class="anchored" data-anchor-id="making-the-plot">Making the plot</h4>
+<p>Here’s the ggplot code that plots the rectangles. If you want to fully understand the data structure that goes into the plot, you’ll have to take a look at the app and trace everything back: <code>rectangleDF()</code> is a reactive expression that depends on all the color inputs and the text that the user enters.</p>
+<p>I use <code>geom_rect</code> to make rectangles, defining their dimensions so that they plot right up against each other. I had to use <code>scale_fill_identity</code> so that the rectangles would be filled with the literal color values included in the input data frame, instead of ggplot’s default behavior, which is to map colors to values based on an external color palette.</p>
+<p><code>theme_void()</code> gave me a totally blank background–no axis labels, no ticks, no nothing. I wanted the plot to read as “an image of colored rectangles”, rather than as “a ggplot”.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot color blocks -------------------------------------------------------</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>plotVals <span class="ot">&lt;-</span> <span class="fu">reactiveValues</span>() <span class="co"># initialize a reactiveValues object to store the plot object</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>output<span class="sc">$</span>colorBlocks <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  p <span class="ot">&lt;-</span>  <span class="fu">rectangleDF</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_rect</span>(<span class="fu">aes</span>(<span class="at">xmin =</span> xmin, <span class="at">xmax =</span> xmax,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>                  <span class="at">ymin =</span> ymin, <span class="at">ymax =</span> ymax, </span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>                  <span class="at">fill =</span> hex))<span class="sc">+</span> <span class="co"># fill w hex colors</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_identity</span>()<span class="sc">+</span> <span class="co"># take the literal hex values as colors, instead of mapping other colors to them.</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_void</span>() <span class="sc">+</span> <span class="co"># totally blank background</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    {<span class="cf">if</span>(input<span class="sc">$</span>showLetters)<span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">x =</span> xmin <span class="sc">+</span> <span class="fl">0.5</span>, </span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>                                        <span class="at">y =</span> ymin <span class="sc">+</span> <span class="fl">0.3</span>, </span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>                                        <span class="at">label =</span> grapheme,</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>                                        <span class="at">col =</span> contrastColor),</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">size =</span> <span class="dv">10</span>,</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">family =</span> <span class="st">"Baloo 2"</span>)}<span class="sc">+</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_identity</span>()</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>  plotVals<span class="sc">$</span>rectanglePlot <span class="ot">&lt;-</span> p</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(p)</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="conditionally-displaying-letters" class="level4">
+<h4 class="anchored" data-anchor-id="conditionally-displaying-letters">Conditionally displaying letters</h4>
+<p>Then, I included a conditional layer: only add the letters if the interactive toggle switch is TRUE; otherwise remove the layers. I often find myself wanting to make conditional layers, especially in Shiny, and I can never remember the syntax on the first try. I refer back to Stack Overflow posts like <a href="https://stackoverflow.com/questions/55248191/if-condition-inside-ggplot?noredirect=1&amp;lq=1">this one</a>. Again with the community!</p>
+<p>Note that I was having trouble getting the ggplot to show up until I assigned it to a variable, <code>p</code>, and then included the <code>print(p)</code> statement at the end. Not sure why, but this worked.</p>
+<p>There are two other interesting pieces of code here that work together with other parts of the app:</p>
+</section>
+</section>
+<section id="change-the-color-of-the-ggplot-letters-based-on-the-rectangle-color" class="level3">
+<h3 class="anchored" data-anchor-id="change-the-color-of-the-ggplot-letters-based-on-the-rectangle-color">Change the color of the ggplot letters based on the rectangle color?</h3>
+<p>I took the same approach for the text color as for the rectangle background colors. I encoded the text color (either #FFFFFF/white or #OOOOOO/black) in the dynamically-created input data frame (a reactive expression) and then used <code>scale_color_identity()</code> to tell <code>ggplot</code> to use those literal hex values to color each letter, instead of mapping other colors onto them. You can see the <code>scale_color_identity()</code> code in the plot code snippet above.</p>
+<p>The tricky part was dynamically assigning each letter to either white or black based on the chosen background color. I figured I shouldn’t need to reinvent the wheel here. Surely web designers have already figured out how to do this. Once again, I Googled, and I found <a href="https://stackoverflow.com/questions/3942878/how-to-decide-font-color-in-white-or-black-depending-on-background-color">this post</a>, which gives a handy formula for calculating the best contrast color based on the rgb values of the background. The recommended threshold value in that post is 186; I fiddled around and ended up settling on 140 because, I don’t know, it just looked better to me.</p>
+<p>To calculate these colors, I had to convert my color hex codes into individual r, g, and b values, which I did using the <code>col2rgb()</code> function.</p>
+<p>Here’s the full code I used for those color computations. Incidentally, you’ll notice that the reactive expression being calculated here is <code>rectangleDF()</code>, which becomes the input to the plot code I shared above.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create df input for the ggplot ------------------------------------------</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>rectangleDF <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req</span>(<span class="fu">length</span>(<span class="fu">split</span>()) <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="co"># will only work when there is text entered in the box</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="at">grapheme =</span> <span class="fu">split</span>(),</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">ymin =</span> <span class="dv">1</span>,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">ymax =</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">xmin =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(.), <span class="at">xmax =</span> <span class="dv">2</span><span class="sc">:</span>(<span class="fu">nrow</span>(.)<span class="sc">+</span><span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(<span class="fu">colorsDF</span>(), <span class="at">by =</span> <span class="st">"grapheme"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">r =</span> <span class="fu">col2rgb</span>(hex)[<span class="dv">1</span>,],</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>           <span class="at">g =</span> <span class="fu">col2rgb</span>(hex)[<span class="dv">2</span>,],</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>           <span class="at">b =</span> <span class="fu">col2rgb</span>(hex)[<span class="dv">3</span>,]) <span class="sc">%&gt;%</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">contrastColor =</span> <span class="fu">case_when</span>((r<span class="sc">*</span><span class="fl">0.299</span> <span class="sc">+</span> g<span class="sc">*</span><span class="fl">0.587</span> <span class="sc">+</span> b<span class="sc">*</span><span class="fl">0.114</span>) <span class="sc">&gt;</span> </span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>                                       <span class="dv">140</span> <span class="sc">~</span> <span class="st">"#000000"</span>,</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>                                     <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"#FFFFFF"</span>))</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>(I thought about giving line numbers for the code, but I plan to keep editing this app, so the line numbers would keep changing. You can use ctrl+F in the app.R script, though)</p>
+</section>
+<section id="save-the-rectangle-plot-as-an-image" class="level3">
+<h3 class="anchored" data-anchor-id="save-the-rectangle-plot-as-an-image">Save the rectangle plot as an image?</h3>
+<p>This part was surprisingly easy, actually! Shiny has a nice <code>downloadHandler()</code> functionality that has two parts: one where you define the content you want to download, and one where you define the (dynamically-created) file name. The syntax is a little weird, so I copied and pasted the code from the Shiny docs and then filled in my parts.</p>
+<p>I’ve reproduced the download code below. The <code>filename</code> function converts the user-entered text to lowercase and replaces all non-alphanumeric characters to underscores, so we get a nice file name consisting of underscore-separated words. Then I append a nicely formatted date.</p>
+<p>Next, I need to define the object to be downloaded–in this case, the rectangle plot. Take a look back at the <code>ggplot</code> code I posted above. You might have been confused by this line, at the top: <code>plotVals &lt;- reactiveValues()</code>; and this line, at the bottom: <code>plotVals$rectanglePlot &lt;- p</code>. What we’re doing there is defining a reactiveValues object that gets updated each time that the ggplot re-renders.</p>
+<p>Now, inside the <code>content</code> function in the downloadHandler, I <code>ggsave()</code> the currently-displayed plot (<code>plotVals$rectanglePlot</code>).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Download rectangles plot as image ---------------------------------------</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>output<span class="sc">$</span>downloadPlot <span class="ot">&lt;-</span> <span class="fu">downloadHandler</span>(</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">filename =</span> <span class="cf">function</span>(){</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste0</span>(<span class="fu">str_replace_all</span>(<span class="fu">tolower</span>(input<span class="sc">$</span>displayText),</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"[^a-z0-9]"</span>, <span class="st">"_"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>             <span class="fu">str_replace_all</span>(., <span class="st">"_{2,}"</span>, <span class="st">"_"</span>), </span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>           <span class="st">"_"</span>,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>           <span class="fu">dateTimeFormat</span>(),</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>           <span class="st">'.png'</span>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  },</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">content =</span> <span class="cf">function</span>(file){</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">req</span>(plotVals<span class="sc">$</span>rectanglePlot)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggsave</span>(file, <span class="at">plot =</span> plotVals<span class="sc">$</span>rectanglePlot, </span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>           <span class="at">device =</span> <span class="st">'png'</span>, <span class="at">width =</span> <span class="fu">length</span>(<span class="fu">split</span>())<span class="sc">/</span><span class="dv">2</span>, </span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>           <span class="at">height =</span> <span class="dv">5</span><span class="sc">/</span><span class="dv">2</span>)</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>  })</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="make-the-contribution-form" class="level3">
+<h3 class="anchored" data-anchor-id="make-the-contribution-form">Make the contribution form?</h3>
+<p>I closely followed <a href="https://deanattali.com/2015/06/14/mimicking-Google-form-shiny/">Dean Attali’s tutorial</a>, in most cases using his code directly. Of course, I wrote my own form questions.</p>
+<p>There are three main differences between my approach and Dean’s.</p>
+<ol type="1">
+<li><p>While Dean collected responses that would be added to an existing data sheet, each as a new line, I wanted to save a whole data frame per response. For that reason, my <code>contributionData()</code> reactive expression does a bunch of data reformatting. In the following code, I bind together the color data that the user has previously entered (co-opting the <code>colorsForExport()</code> reactive expression that I created in order to allow the user to download the color data as a csv) and the responses that the user gave to the demographic questions in the form.</p>
+<p>Of course, this relies on the user having previously entered their color data on the <strong>Explore</strong> page before filling out a form. I added a mandatory <code>checkboxInput</code> with text to this effect.</p>
+<p>I actually don’t love this approach. I think it would be less confusing for the user to have a “mirror” of the <strong>Explore</strong> tab’s color selectors show up on the <strong>Contribute</strong> page, so they could tweak their colors before saving the form. I don’t know if it’s possible to have a single input widget show up in multiple places in a Shiny app (so that changing it in one place will automatically also change it in the other places), and I suspect it’s not.</p>
+<p>So in order to make this work, I would have to program a whole new set of color selectors, and then add some logic that updates each selector in response to a change in its mirror, and vice versa. I’m sure this is possible, but I don’t know how to do it off the top of my head, and I left it out for the sake of time.</p></li>
+<li><p>I added some dynamic question options. I wanted respondents to be able to self-describe their gender identity. Also, for the question at the end about different types of synesthesia, I wanted respondents to be able to include types that I hadn’t listed. I listed most of the major synesthesia types I could find based on my research, but you never know!</p>
+<p>This turned out to be pretty simple, using the <code>uiOutput</code>/<code>renderUI</code> <a href="https://shiny.rstudio.com/tutorial/written-tutorial/lesson4/">pair of functions</a>. Here’s a snippet of code from the UI portion of the form:</p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># (more form questions above)</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">radioButtons</span>(<span class="st">"gender"</span>, <span class="fu">labelMandatory</span>(<span class="st">"What is your gender identity?"</span>),</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">"woman"</span>, <span class="st">"non-binary"</span>, </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>                         <span class="st">"man"</span>, <span class="st">"prefer not to say"</span>, </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>                         <span class="st">"prefer to self-describe (click to add text)"</span>), </span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">selected =</span> <span class="fu">character</span>(<span class="dv">0</span>), <span class="at">width =</span> <span class="st">"100%"</span>),</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="fu">uiOutput</span>(<span class="st">"genderSelfDescribe"</span>), <span class="co"># here's the uiOutput that dynamically generates a new question if the respondent wants to self-describe their gender.</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">radioButtons</span>(<span class="st">"sex"</span>, <span class="fu">labelMandatory</span>(<span class="st">"Sex assigned at birth:"</span>),</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>             <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">"female"</span>, <span class="st">"male"</span>, <span class="st">"intersex"</span>, </span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>                         <span class="st">"prefer not to say"</span>), </span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>             <span class="at">selected =</span> <span class="fu">character</span>(<span class="dv">0</span>), <span class="at">width =</span> <span class="st">"100%"</span>),</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co"># (more form questions below)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Sandwiched between the <code>gender</code> and <code>sex</code> questions, the line <code>uiOutput("genderSelfDescribe")</code> allows a dynamically-generated question to appear if the respondent selects “prefer to self-describe” in the <code>gender</code> question.</p>
+<p>Here’s the code on the server side that makes this possible:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Contribute form -------------------------------------------------------</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Dynamic options</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="do">## self-describe gender</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>output<span class="sc">$</span>genderSelfDescribe <span class="ot">&lt;-</span> <span class="fu">renderUI</span>({</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req</span>(input<span class="sc">$</span>gender)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="sc">!</span>input<span class="sc">$</span>gender <span class="sc">==</span> <span class="st">"prefer to self-describe (click to add text)"</span>){</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="cn">NULL</span>)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  }<span class="cf">else</span>{</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">textInput</span>(<span class="st">"genderSelfDescribe"</span>, </span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>              <span class="at">label =</span> <span class="cn">NULL</span>, <span class="st">""</span>)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>And then of course, there’s similar code to provide a dynamic option for the free-text synesthesia types question.</p>
+<ol start="3" type="1">
+<li>While Dean’s tutorial describes saving responses using persistent data storage on the server where the Shiny app is hosted, he also points out that this isn’t possible on <a href="shinyapps.io">shinyapps.io</a>. So I decided to use one of the other options that he outlines in <a href="https://deanattali.com/blog/shiny-persistent-data-storage/">the follow-up to the original tutorial</a>: storing the data on Google Drive uisng the <code>Googlesheets4</code> package.</li>
+</ol>
+</section>
+<section id="save-the-contributed-data-to-google-drive" class="level3">
+<h3 class="anchored" data-anchor-id="save-the-contributed-data-to-google-drive">Save the contributed data to Google Drive?</h3>
+<p>It took me a while (lots of trial and error, and lots of Google searches that I can’t reproduce) to figure out how to get the data saving to Google Drive to work.</p>
+<p>Basically, here’s the challenge. In order to read and write to Google Drive, you have to “authenticate”, i.e.&nbsp;“log in” to an account. That makes sense–of course it would be bad if I could make an app that could modify files in some random other person’s account with impunity.</p>
+<p>But, typically when we authenticate Google Drive (or anything else) from an R script, the package does a little “dance” with your web browser. You run the code command to authenticate, and then a browser window pops open and prompts you to enter your password. You do that, and then the code will run back in your RStudio window.</p>
+<p>That setup works fine for interactive programming, but it doesn’t work for a Shiny app. First of all, it would be super annoying for app users to have to deal with a separate browser popup just in order to be able to submit their forms. And more to the point, it wouldn’t help anyway–because they’d have to log into <em>my</em> Google account! So that’s not possible or desirable.</p>
+<p>That means that in order to write data to Google Drive directly from my Shiny app, I’ll have to use “non-interactive authentication” via a secret “token”.</p>
+<p>Here’s how I did that.</p>
+<section id="setup" class="level4">
+<h4 class="anchored" data-anchor-id="setup">Setup</h4>
+<p>First, I had to authenticate interactively one time, in order to set things up. To do this, I first created a hidden directory inside my main Shiny project and called it “.secrets”. To do this, I opened up the Terminal window inside RStudio. (You can also do this with the Terminal app, or the equivalent, on your computer–it doesn’t have to be through RStudio.)</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="makeSecrets.png" class="img-fluid figure-img" width="863"></p>
+<figcaption class="figure-caption">Making the .secrets directory</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>First, I checked to make sure I was in the root project directory by typing <code>ls</code> and checking what other files were there. Alternatively, you could print the working directory with <code>pwd</code>.</p>
+<p>Once I determined that I was indeed in the root directory, I typed <code>mkdir .secrets</code>. The <code>.</code> before ‘secrets’ will make the directory hidden.</p>
+<p>Next, <em>and this is important!</em> I hid ‘.secrets’ from being tracked by git. It’s a good idea to do this right at the beginning to make sure you don’t forget. You definitely do not want your private access token to end up on GitHub for all the world to see!</p>
+<p>If you have git running through RStudio, an easy way to do this is to go up to the <strong>git</strong> panel, click the gear icon, and then click “Ignore”. This will open the .gitignore file. Now just add ‘.secrets’ as a new line in the .gitignore file to ignore the entire contents of the secrets directory. If you’re more comfortable using the terminal, you can of course open the .gitignore using <code>nano .gitignore</code> or similar.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="gitignore.png" class="img-fluid figure-img" width="368"></p>
+<figcaption class="figure-caption">Opening the .gitignore file</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Okay, now we need to load the <code>googlesheets4</code> and <code>gargle</code> packages. <code>gargle</code> manages token authentication, and <code>googlesheets4</code> is what we’ll use to write the data to Google Sheets.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(googlesheets4) <span class="co"># we'll use this for writing to google sheets</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gargle) <span class="co"># for authentication/tokens</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Next, set some <code>options()</code>. You can do this part in the console–it only needs to be done once. You’re just telling <code>gargle</code> where to save the token that you’re about to generate.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">gargle_oauth_email =</span> <span class="st">"kaija.gahm@aya.yale.edu"</span>, <span class="co"># the email I wanted to use for the app</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">gargle_oauth_cache =</span> <span class="st">".secrets"</span>) <span class="co"># </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="get-a-token" class="level4">
+<h4 class="anchored" data-anchor-id="get-a-token">Get a token</h4>
+<p>In order to actually generate a token, type <code>gs4_auth()</code> in the console. This should open up a window in your browser that will prompt you to sign in to your Google account. If you, like me, have multiple Google accounts (I have <strong>five</strong> right now), double-check that you’re signing into the same account that you specified in the <code>options()</code> call above. That’s the account whose Drive you’ll be writing to from your app.</p>
+<p>Once you’ve authenticated, you should get a plain-looking screen that tells you the authentication is complete. You can close that window and go back to R now. (This is the auth “dance” I mentioned earlier).</p>
+<p>Now, double-check that your token got added to your ‘.secrets/’ directory. It should get put there automatically because of the options you set. If it didn’t, try re-running the <code>options()</code> code above and re-trying the authentication.</p>
+<p>I checked the contents of the ‘.secrets/’ directory by using the Terminal window in RStudio to navigate into ‘.secrets/’ and then list the files inside.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> .secrets</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>You should see something like <code>nfo674ndu6e8gh50p24q2nm8hk3a6e0k_kaija.gahm@aya.yale.edu</code> (obviously that’s not my real token, but it has the same format–a string of numbers and letters, followed by an underscore and then your email address.)</p>
+</section>
+<section id="non-interactive-authentication" class="level4">
+<h4 class="anchored" data-anchor-id="non-interactive-authentication">Non-interactive authentication</h4>
+<p>Okay. Now you have a token. Phew! The next step is to set up non-interactive authentication. I did this by following <a href="https://cran.r-project.org/web/packages/gargle/vignettes/non-interactive-auth.html">this vignette</a>. It’s really long. Don’t panic! The section you want is <strong>Project-level OAuth cache</strong>.</p>
+<p>You’ll notice that the first part of this section gives instructions on how to do basically what we just did: create a “.secrets/” directory and use a one-time interactive authentication to store a token in it. Here, they use the <code>googledrive</code> package as an example. My example above used <code>googlesheets4</code> instead, but it’s the same process.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="projectLevelOAuth.png" class="img-fluid figure-img" width="752"></p>
+<figcaption class="figure-caption">My alphabet</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Now, follow the rest of the steps in this tutorial. They include adding this code at the top of your app, which you’ll see at the top of my own app.R file.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">gargle_oauth_cache =</span> <span class="st">".secrets"</span>,</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">gargle_oauth_email =</span> <span class="cn">TRUE</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="notes-and-caveats" class="level4">
+<h4 class="anchored" data-anchor-id="notes-and-caveats">Notes and caveats</h4>
+<p>Note that there are other approaches to non-interactive authentication that use a Google service account. I tried to get this set up and didn’t have any luck–or rather, I got it set up, but then the process of actually <em>accessing</em> the data in a Google service account is complicated and I gave up and followed this tutorial instead with my personal account. For a small, personal app like greenT, that’s fine. If you want to implement something bigger or more sensitive, you should look into that approach. Maybe you’ll succeed where I didn’t. A warning: the Google API website is one of the most confusing sites I’ve ever tried to navigate, and I’m no Luddite.</p>
+<p>One more note on saving the form data to Google Sheets. Ideally, I would want each respondent’s data to be saved as its own sheet, and I’d want those sheets to be stored in a designated folder in my Google Drive. Unfortunately, and counter-intuitively, this turns out to be hard to do.</p>
+<p>The <code>googledrive</code> package in R is designed for interacting with Google Drive file structures, while the <code>googlesheets4</code> package is built to deal with individual Google Sheets files, but not so much with their organization within Google Drive. If you’re used to working with Google spreadsheets stored on Google Drive the normal way (i.e.&nbsp;through the web interface), it’s jarring to have these processes separated.</p>
+<p>I spent a while trying to find the functionality in <code>googlesheets4</code> that would allow me to organize files. Finally, I came across <a href="https://github.com/tidyverse/googlesheets4/issues/111">this issue</a> on the <code>googlesheets4</code> GitHub page, where Jenny Bryan explains the separation of functionality between these two packages. She subsequently wrote a <a href="https://googlesheets4.tidyverse.org/articles/articles/drive-and-sheets.html">vignette</a> on working with the two packages together. I followed the vignette and had a whole nice workflow set up where the data got written to a google sheet that was then moved to a ‘greenT/’ directory I had pre-created on Google Drive. But because both packages had to make calls to the <code>googledrive</code> and <code>googlesheets4</code> API’s, the whole thing was too slow, and the user had to wait an inordinately long time for their form response to submit.</p>
+<p>I’m sure there’s a way to speed this up, but I needed to have it working on a short timeline, so I ended up sticking with individual google sheets for each response, stored in my main Google Drive. Not ideal, but I added a ‘greenT_’ prefix to each file name so at least I’ll be able to find them easily. (Note: the code snippet I’m reproducing here lives in ‘defs.R’ within my app.)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to save form data ----------------------------------------------</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>saveData <span class="ot">&lt;-</span> <span class="cf">function</span>(data) {</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  fileName <span class="ot">&lt;-</span> <span class="fu">sprintf</span>(<span class="st">"%s_%s_%s"</span>,</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"greenT"</span>,</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>                      <span class="fu">dateTimeFormat</span>(),</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>                      digest<span class="sc">::</span><span class="fu">digest</span>(data))</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create an empty spreadsheet</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  ss <span class="ot">&lt;-</span> <span class="fu">gs4_create</span>(<span class="at">name =</span> fileName,</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>                   <span class="at">sheets =</span> <span class="st">"data"</span>)</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Put the data.frame in the spreadsheet and provide the sheet_id so it can be found</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sheet_write</span>(data, ss, <span class="at">sheet =</span> <span class="st">"data"</span>)</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="work-efficiently-with-all-36-color-selectors" class="level3">
+<h3 class="anchored" data-anchor-id="work-efficiently-with-all-36-color-selectors">Work efficiently with all 36 color selectors?</h3>
+<p>Since the app requires assigning a color to each letter (26) and digit (10), we have 36 color selectors to deal with, each with its own inputId. I called the letter selectors <code>input$a</code>, <code>input$b</code>, etc., and I called the number selectors <code>input$one</code>, <code>input$two</code> since there are annoying hoops to jump through if you want to make a number into a variable.</p>
+<p>36 is a lot of individual variables to type out. Frustratingly, it’s right on the cusp of what I’m willing to do manually–few enough that manual listing is possible, but enough that it’s a serious pain, especially if you have to list them out more than once.</p>
+<p>Ultimately, then, I opted to deal with the color selectors programmatically. It was a little tricky to figure out, in part because there are three really three different lists of selectors.</p>
+<section id="making-some-vectors" class="level4">
+<h4 class="anchored" data-anchor-id="making-some-vectors">Making some vectors</h4>
+<ol type="1">
+<li><p>The inputId’s of the selectors. As I explained above, this is a combination of the letters of the alphabet (lowercase) with the spelled-out digits, “zero” through “nine”.</p></li>
+<li><p>The display names of the selectors. For some arbitrary reason I decided I wanted them to display as uppercase letters and digits. Not sure why I did that. In retrospect, since everything shows up as lowercase in the ggplot, maybe I should have gone with lowercase. But regardless: the display names end up being <code>c(A:Z, 0:9)</code>.</p></li>
+<li><p>The characters that the selectors represent. This is important because I have to compile a data frame of all the selector input colors, to join to a data frame created from the text that the user entered. Since that text gets converted to lowercase, the selector inputs also have to be assigned lowercase letters in order to match up. So for this, we need yet another vector, <code>c(a:z, 0-9)</code>. This is also how I want the characters to print out in the downloadable csv data. Lowercase just seems more standard and appropriate in that case.</p></li>
+</ol>
+<p>Yeah, as I’m typing this I’m realizing that I <em>really</em> should have just combined steps 2 and 3 and gone with lowercase display labels. Oops. <em>Note also: this ignores the possibility that someone might have different colors associated with uppercase and lowercase letters. That isn’t true for me, but it is true for at least one of my testers. Maybe I’ll add that functionality in the future!</em></p>
+<p>Anyway. I went ahead and defined these three vectors in my ‘defs.R’ script, like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>inputIds <span class="ot">&lt;-</span> <span class="fu">c</span>(letters, <span class="fu">c</span>(<span class="st">"zero"</span>, <span class="st">"one"</span>, <span class="st">"two"</span>, <span class="st">"three"</span>, <span class="st">"four"</span>, <span class="st">"five"</span>, </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>                         <span class="st">"six"</span>, <span class="st">"seven"</span>, <span class="st">"eight"</span>, <span class="st">"nine"</span>))</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>displayNames <span class="ot">&lt;-</span> <span class="fu">c</span>(LETTERS, <span class="dv">0</span><span class="sc">:</span><span class="dv">9</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>charactersOut <span class="ot">&lt;-</span> <span class="fu">tolower</span>(displayNames)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Then, I could use those vectors to operate on all of my inputs at once, using functions like <code>lapply</code> and <code>map2</code>.</p>
+<p>For example, let’s take a look at how I created the individual <code>colourInput</code> objects to display on the main page of the app.</p>
+</section>
+<section id="example-creating-the-selectors" class="level4">
+<h4 class="anchored" data-anchor-id="example-creating-the-selectors">Example: Creating the selectors</h4>
+<p>First, I defined a function, <code>colorInit()</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to create inputs -----------------------------------------------</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>colorInit <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">x =</span> .x, <span class="at">y =</span> .y){</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  colourpicker<span class="sc">::</span><span class="fu">colourInput</span>(x, y, <span class="at">value =</span> <span class="fu">randomColor</span>(), <span class="at">showColour =</span> <span class="st">"background"</span>)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The .x and .y are default inputs because I know I’ll be using this function in a call to <code>map2()</code>. <code>value = randomColor()</code> initializes each selector with a random hex code when the app initially loads. And <code>showColour = "background"</code> shows the chosen color as the background of the selector, not as hex code text.</p>
+<p>Now, I can call this function in order to render the <code>colorInput</code>s in the UI. The <code>column()</code> code below had to be repeated 6 times (6 total columns) in the UI. There’s probably a way to streamline even <em>that</em> part of things, but I didn’t mind repeating myself 6 (rather than 36) times, and I didn’t want to write another function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fluidRow</span>(</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ... (other columns)</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">column</span>(<span class="at">width =</span> <span class="dv">2</span>,</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>         purrr<span class="sc">::</span><span class="fu">map2</span>(<span class="at">.x =</span> <span class="fu">horiz</span>(inputIds)[<span class="dv">7</span><span class="sc">:</span><span class="dv">12</span>], </span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">.y =</span> <span class="fu">horiz</span>(displayNames)[<span class="dv">7</span><span class="sc">:</span><span class="dv">12</span>], </span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>                     colorInit)</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ... (more columns)</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>) <span class="co"># 6 columns in total</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>So, let’s take a look at this code. First, I’ve created a <code>fluidRow()</code> that will serve as the horizontal strip where all the color inputs are housed in the UI. Because I know I want to lay out the selectors in a 6x6 grid, I create 6 <code>column()</code> definitions, each with width 2 (a width of 12 means “take up the full page”, so dividing that by 6 gives a width of 2 for each column).</p>
+<p>Then, I use <code>map2()</code> to render the inputs. I define two arguments, <code>.x</code> and <code>.y</code>. (Ignore the <code>horiz()</code> function for now–I’ll talk about that in a second.) <code>.x</code> is going to be the inputId’s of the color selectors, so for that I can use <code>inputIds</code>, one of the three vectors I created in the previous step. <code>.y</code> is going to be the labels, or what actually gets displayed next to the selctors. So for that, I can use <code>displayNames</code>, the vector I created that includes capital letters and digits. Finally, <code>colorInit</code> is the <code>.f</code> argument (which I probably should have labeled as such–oops.) So, <code>map2()</code> passes <code>.x</code> and <code>.y</code> into that <code>colorInit()</code> function that I just defined, and for each element of the input vector, it creates a <code>colourInput()</code> object with inputId taken from the <code>.x</code> vector and label taken from the <code>.y</code> vector.</p>
+</section>
+<section id="arranging-the-letters-horizontally" class="level4">
+<h4 class="anchored" data-anchor-id="arranging-the-letters-horizontally">Arranging the letters horizontally</h4>
+<p>Cool, okay. So now let’s talk about the <code>horiz()</code> function, and also those indices <code>[7:12]</code>. The input vectors I created are, naturally, in alphabetical order, from A-Z and then 0-9. But I’m creating my inputs in 6 columns. If I populated the columns in order of that vector (for example, using elements <code>[1:6]</code> for the first column; <code>[7:12]</code> for the second column), I’d end up with the alphabet going down the columns instead of across rows.</p>
+<p>That’s <em>fine</em>, I guess, but I find it more naturally to read left to right, top to bottom (instead of top to bottom, left to right). I want the top left selector to be <code>A</code>, and then the one directly to its right to be <code>B</code>, because I think that’s what the user will expect.</p>
+<p>So, I created a function called <code>horiz()</code>. Here it is:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to reorganize the inputs horizontally --------------------------</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>horiz <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">vec =</span> inputIds, <span class="at">nrow =</span> <span class="dv">6</span>, <span class="at">ncol =</span> <span class="dv">6</span>){</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(vec, <span class="at">nrow =</span> nrow, <span class="at">ncol =</span> ncol, <span class="at">byrow =</span> T)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  horizVec <span class="ot">&lt;-</span> <span class="fu">c</span>(mat)</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(horizVec)</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>horiz()</code> takes my (alphabetically-ordered) vector as input. It then generates a matrix from that vector, with <code>byrow = T</code> (i.e.&nbsp;laying out the vector in rows, not in columns–the way I want it!). Next, it uses <code>c()</code> to collapse that matrix back down into a vector. Because R works on columns by default, the matrix will be collapsed column-wise, not row-wise. So the vector returned will be <code>c("a", "g", "m", "s", "y", "4", "b", "h", "n", "t")</code>… etc. etc.</p>
+<p>So now, I can use the elements of <em>that</em> vector, 6 at a time, to populate and name the color selectors for each column.</p>
+<p>In the case of the code snippet above that uses <code>map2()</code>, I’m making the second column, so I use elements <code>[7:12]</code> of each transformed vector. <code>horiz(inputIds)[7:12]</code> gives me <code>c("b", "h", "n", "t", "z", "5")</code>, and <code>horiz(displayNames)[7:12]</code> gives me <code>c("B", "H", "N", "T", "Z", "5")</code>.</p>
+<p>You might be wondering why I went to all this trouble. Why not just make the selectors row-wise, instead of column-wise?</p>
+<p>There definitely might be a good way to do this (please share it if you know how!) but I couldn’t figure it out. It’s not trivial to align things using CSS, and I think that’s what I would have had to do in order to ensure equal spacing. I know R and I don’t know CSS, so I ended up going with the R-centric solution. Besides, I got to feel clever writing functions and such.</p>
+</section>
+</section>
+</section>
+<section id="get-involved" class="level2">
+<h2 class="anchored" data-anchor-id="get-involved">Get involved</h2>
+<p>That’s it for specific notes on the code for this app! If you’re curious about the rest of the code, please check out the repository, which is publicly available <a href="https://github.com/kaijagahm/greenT">here</a>. If you have specific questions, you can email me, and I’ll try to get back to you (but no promises).</p>
+<p>I also welcome contributions, if you’re interested in making this app better! Go ahead and <a href="https://github.com/kaijagahm/greenT/issues">file an issue</a> or <a href="https://github.com/kaijagahm/greenT/pulls">submit a pull request</a> on GitHub. I’m going to be busy over the coming months and I’m not sure how much time I’ll have to work on this, so I may not be actively responding to issues. But I welcome any and all contributions or ideas for the future.</p>
+<p>If you haven’t already checked out my first blog post about this app, you can read it <a href="https://kaijagahm.netlify.app/posts/2021-05-09-greent/">here</a>. And the app itself lives <a href="https://kaijagahm.shinyapps.io/greenT/">here</a>.</p>
+<p>Thanks for reading.</p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{2021,
+  author = {},
+  title = {greenT Part 2: {Behind} the App},
+  date = {2021-05-13},
+  url = {https://kaijagahm.github.io/posts/2021-05-12-greent-how-to},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-2021" class="csl-entry quarto-appendix-citeas" role="listitem">
+<span>“greenT Part 2: Behind the App.”</span> 2021. May 13, 2021. <a href="https://kaijagahm.github.io/posts/2021-05-12-greent-how-to">https://kaijagahm.github.io/posts/2021-05-12-greent-how-to</a>.
+</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+ Copyright 2024, Kaija Gahm
+  </li>  
+</ul>
+    </div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/kaijagahm">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>
