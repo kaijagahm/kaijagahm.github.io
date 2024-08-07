@@ -7,7 +7,7 @@ author:
     orcid: 0000-0002-4612-4426
     affiliation: Cary Institute of Ecosystem Studies
 date: 05-13-2021
-categories: [R] # self-defined categories
+categories: [R, shiny] # self-defined categories
 image: numbers.png
 citation: 
   url: https://kaijagahm.github.io/posts/2021-05-12-greent-how-to

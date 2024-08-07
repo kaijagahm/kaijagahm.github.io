@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Kaija Gahm">
+<meta name="dcterms.date" content="2021-05-09">
+<meta name="description" content="An introduction to a Shiny app I built to show friends the inner workings of my brain–and some musings on my experience learning Shiny this year.">
+
+<title>Kaija Gahm - greenT: Exploring grapheme-color synesthesia</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Kaija Gahm</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts.html" rel="" target="">
+ <span class="menu-text">Blog: woodpeckR</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools ms-auto">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-page-left">
+      <h1 class="title">greenT: Exploring grapheme-color synesthesia</h1>
+                  <div>
+        <div class="description">
+          An introduction to a Shiny app I built to show friends the inner workings of my brain–and some musings on my experience learning Shiny this year.
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">R</div>
+                <div class="quarto-category">shiny</div>
+              </div>
+                  </div>
+  </div>
+    
+  <div class="quarto-title-meta-author">
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-heading">Affiliation</div>
+    
+      <div class="quarto-title-meta-contents">
+      <p class="author"><a href="https://kaijagahm.github.io">Kaija Gahm</a> <a href="https://orcid.org/0000-0002-4612-4426" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+    </div>
+      <div class="quarto-title-meta-contents">
+          <p class="affiliation">
+              Cary Institute of Ecosystem Studies
+            </p>
+        </div>
+      </div>
+
+  <div class="quarto-title-meta">
+
+        
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">May 9, 2021</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#a-guided-tour" id="toc-a-guided-tour" class="nav-link" data-scroll-target="#a-guided-tour">A guided tour</a></li>
+  <li><a href="#future-enhancements" id="toc-future-enhancements" class="nav-link" data-scroll-target="#future-enhancements">Future enhancements</a></li>
+  <li><a href="#get-involved" id="toc-get-involved" class="nav-link" data-scroll-target="#get-involved">Get involved</a></li>
+  <li><a href="#thoughts-on-the-process-of-building-the-app" id="toc-thoughts-on-the-process-of-building-the-app" class="nav-link" data-scroll-target="#thoughts-on-the-process-of-building-the-app">Thoughts on the process of building the app</a></li>
+  <li><a href="#behind-the-app" id="toc-behind-the-app" class="nav-link" data-scroll-target="#behind-the-app">Behind the app</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+
+
+
+
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="numbers.png" class="img-fluid figure-img" width="750"></p>
+<figcaption class="figure-caption">The digits 0-9, according to my brain</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><em>This article has been adapted from my entry into the 2021 RStudio Shiny contest, posted on <a href="https://community.rstudio.com/t/greent-exploring-grapheme-color-synesthesia-shiny-contest-submission/104204">RStudio Community</a>.</em></p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="alphabet.png" class="img-fluid figure-img" width="2700"></p>
+<figcaption class="figure-caption">My alphabet</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<section id="introduction" class="level3">
+<h3 class="anchored" data-anchor-id="introduction">Introduction</h3>
+<p>My name is Kaija, and I have what’s known as grapheme-color synesthesia. It’s a (completely benign!) phenomenon where I experience letters and numbers as having colors associated with them. I don’t literally see colors floating in the air, but I’ve consistently associated a color with each letter and number for most of my life.</p>
+<p>Having synesthesia doesn’t affect my life much. It occasionally comes in handy for remembering credit card PINs and phone numbers, and sometimes I draw associations between completely unrelated words because they happen to have similar colors. But it’s mostly just a fun little party trick.</p>
+<p>Still, when I tell my friends about my synesthesia, they want to know what color their name is. And while I can certainly type out “magenta, red, brown, pale yellow” (Mary) or “magenta, red, blue, blue, whitish, gray” (Maddie), that can be hard to picture. And it’s frustrating to have to consciously translate my mental impressions of color into words.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="maryMaddie.png" class="img-fluid figure-img" width="825"></p>
+<figcaption class="figure-caption">Some example names: Mary and Maddie</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>I wanted a way to quickly represent any word or words in the colors I see it in. I did a bit of googling to see if anyone had come up with a synesthesia simulator. The closest thing I found was Bernadette Sheridan’s website <a href="https://synesthesia.me/">synesthesia.me</a>, which did exactly what I wanted to do, but only for Bernadette’s own colors! Cool, but not useful to me or to any other synesthetes (like my brother) who might want to show me their own colors.</p>
+<p>So, I built <a href="https://kaijagahm.shinyapps.io/greenT/"><strong>this app</strong></a>. I’m excited to add more features in the future, but for now, I’ll explain the three main parts.</p>
+<p><em>The source code for the app is <a href="https://github.com/kaijagahm/greenT">here</a>.</em></p>
+</section>
+<section id="a-guided-tour" class="level3">
+<h3 class="anchored" data-anchor-id="a-guided-tour">A guided tour</h3>
+<section id="page-explore" class="level4">
+<h4 class="anchored" data-anchor-id="page-explore">Page: ‘Explore’</h4>
+<p>At the top of the app’s main page, you’ll see 36 color selectors (developed using the colourpicker package), one for each letter and digit. When you load the app, the colors are chosen randomly, but you can change any or all of the colors by clicking on each selector yourself. If you find it easier to start from white selectors, click “Set all to white” and then choose colors one at a time.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="explore.png" class="img-fluid figure-img" width="1262"></p>
+<figcaption class="figure-caption">The ‘Explore’ page</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>If you have synesthesia, you can set your own colors. If you don’t, feel free to use the app to choose whatever colors look good to you. Or you can click the “Kaija’s colors” button to see what color your name is in my head, similar to Bernadette’s project. Once you’re happy with the colors you’ve set, feel free to hide the selectors using the “Show/hide selectors” link at the top.</p>
+<p>Next, you can enter text you’d like to translate into colors. The text will plot as rectangles, with the letters optionally superimposed in either white or black, whichever provides the best contrast to the color you’ve chosen. Use the toggle switch to remove the letters. Note that for simplicity, all text gets converted to lowercase, and all non-alphanumeric characters show up as white.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="enteringTextToDisplay.png" class="img-fluid figure-img" width="1278"></p>
+<figcaption class="figure-caption">Entering text to display</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>If you want to show your friends what colors their names are, download the plot you’ve created using the “Download rectangles as .png” button. If you’re interested in analyzing your colors further, download the color values themselves, as both hex codes and RGB values, using the “Download colors as .csv” button.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="downloadedData.png" class="img-fluid figure-img" width="690"></p>
+<figcaption class="figure-caption">Here’s an example of the downloaded color data</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="page-about" class="level4">
+<h4 class="anchored" data-anchor-id="page-about">Page: ‘About’</h4>
+<p>The <strong>About</strong> page gives a bit of backstory for the app, similar to what I’ve written here. It also links to a few more resources you might be interested in if you want to learn more about synesthesia. And most importantly, I use this page to thank <a href="https://www.jdtrat.com/">Jonathan Trattner</a>, <a href="https://deanattali.com/">Dean Attali</a>, and <a href="https://synesthesia.me/about">Bernadette Sheridan</a> for their contributions to this app, in code or inspiration.</p>
+</section>
+<section id="page-contribute" class="level4">
+<h4 class="anchored" data-anchor-id="page-contribute">Page: ‘Contribute’</h4>
+<p>I’m always on the hunt for projects, and I’ve thought for a while that I would love to analyze data on my own colors and those of other people. For example, past research has found that <a href="https://neurocritic.blogspot.com/2013/01/fisher-price-synesthesia.html">there are some patterns</a> in which letters synesthetes associate with which colors. I’m also interested in intra-individual variation. For example, while my K is a very strong magenta color and always has been (it has never varied for as long as I can remember, and it doesn’t change based on the letters around it), some of my letter-color associations are much weaker. E, which I’ve encoded in this app as gray, is really almost colorless or translucent. It tends to take on the colors of the letters around it. So I’d love to repeatedly collect my own color data and analyze it.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="kaija.png" class="img-fluid figure-img" width="375"></p>
+<figcaption class="figure-caption">My own name in my colors</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>If you want to contribute your data to my (independent, informal, unofficial!) research into this phenomenon, I encourage you to fill out the form on the Contribute page. Make sure to set your colors using the selectors on the Explore tab before filling out the rest of the form–when you click “Submit”, the currently-selected colors will be recorded along with the demographic info you’ve entered.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="contributionForm.png" class="img-fluid figure-img" width="1223"></p>
+<figcaption class="figure-caption">The contribution form</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Also: feel free to submit colors more than once, if yours are a bit variable like mine are! Just use the same name and (optionally) email address, so I can relate your responses to each other.</p>
+</section>
+</section>
+<section id="future-enhancements" class="level3">
+<h3 class="anchored" data-anchor-id="future-enhancements">Future enhancements</h3>
+<p>Here’s what I’d like to add to this app in the future:</p>
+<ul>
+<li>Bookmarking, so you can save the colors you’ve entered and come back to them</li>
+<li>Ability to upload your previously-downloaded data (more robust version of bookmarking)</li>
+<li>A continuously-updating analysis page that shows statistics based on previously-submitted data (anonymized!)</li>
+<li>Opacity toggles or other more nuanced formatting tweaks for the colors</li>
+<li>A “colored text” mode that displays the letters themselves in color</li>
+</ul>
+</section>
+<section id="get-involved" class="level3">
+<h3 class="anchored" data-anchor-id="get-involved">Get involved</h3>
+<p>If you’re interested in contributing to the app, submit an issue or PR <a href="https://github.com/kaijagahm/greenT">on GitHub</a>, or <a href="https://kaijagahm.netlify.app/">get in touch</a>! I’d love to collaborate with you.</p>
+</section>
+<section id="thoughts-on-the-process-of-building-the-app" class="level3">
+<h3 class="anchored" data-anchor-id="thoughts-on-the-process-of-building-the-app">Thoughts on the process of building the app</h3>
+<p>Building this app was a joyful process because it made me acutely aware of how far I’ve come with Shiny in less than a year.</p>
+<p>I had never built a Shiny app until July 28th, 2020, when I watched Garrett Grolemund’s Shiny tutorial videos and started playing around with a simple app. By chance, the <a href="https://allisonhorst.github.io/palmerpenguins/">Palmer penguins dataset</a> was up for <a href="https://github.com/rfordatascience/tidytuesday">Tidy Tuesday</a> that week, so I made a <a href="https://kaijagahm.shinyapps.io/ExplorePalmerPenguins/">simple data explorer app</a> for that dataset. I was surprised at how easy it was.</p>
+<p>I had started learning Shiny in order to build a much more complicated data explorer app for the Yale Grammatical Diversity Project. I really didn’t know what I was getting myself into–I had pitched the idea to my boss at the YGDP with the clear caveat that I had never programmed in Shiny before, ever. But I was confident that I could figure it out. I had yet to encounter a skill in R that I couldn’t crack if I put my mind and time to it.</p>
+<p>“Time” turned into around nine months of programming, debugging, and fiddling. It was a frustrating and at times lonely process, since I had no programmer colleagues to turn to for help and brainstorming. But I eventually produced an app I was proud of; you can read more about it <a href="https://kaijagahm.netlify.app/projects/2021-02-05-ygdp-dashboard/">here</a> and see the finished app embedded at the bottom of that page or <a href="https://ygdp.shinyapps.io/ygdpDashboard">here</a>.</p>
+<p>The YGDP dashboard reinforced for me that I could do anything in Shiny that I set my mind to, and <strong>greenT</strong> was a chance to put that into practice. With many fewer moving parts, <strong>greenT</strong> was a bit of a softball to myself. That’s not to say that it was easy. Rather, when I did run up against a problem, I knew it could not possibly be as challenging as the problems I had already debugged for the YGDP app. I confidently laid out the app and linked up the components and had a working prototype in an afternoon. Then came many more afternoons of tidying and adding features, but that was the fun part.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="dataSavingWorks.png" class="img-fluid figure-img" width="1052"></p>
+<figcaption class="figure-caption">A particularly satisfying commit–I got the contribution form to write user data to Google Drive</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>I hope it doesn’t sound like I’m bragging. I had, at this point, almost a year of 10+ hours a week of Shiny under my belt. But I also want to point out that I didn’t really do this alone at all. I have been, as Steph Locke so eloquently put it, “community-taught”.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="stephlocke.png" class="img-fluid" width="586"></p>
+</div>
+</div>
+<p>Part of that is being able to jump into Shiny by watching beautifully thought-out videos like the Garrett Grolemund tutorial I referred to above. Part of that is benefiting from the packages that others before me have developed. For example, <a href="https://deanattali.com/">Dean Attali</a> does great work in Shiny, and his code literally made this app possible: the color selectors on the main page come from his <a href="https://deanattali.com/blog/colourpicker-package/"><code>colourpicker</code></a> package, and the contribution form is taken almost verbatim from his <a href="https://deanattali.com/2015/06/14/mimicking-Google-form-shiny/">tutorial</a> on mimicking a Google form with Shiny.</p>
+<p>I had another advantage in developing greenT: <a href="https://www.jdtrat.com/">Jonathan Trattner</a> collaborated with me during most of the app’s development. Even though his time was limited by classes and exams, it was invaluable to be able to ping him on Slack or hop on a video call to discuss something I was stuck on.</p>
+</section>
+<section id="behind-the-app" class="level3">
+<h3 class="anchored" data-anchor-id="behind-the-app">Behind the app</h3>
+<p>If you’d like to read more about the code behind the app, check out <a href="https://kaijagahm.netlify.app/posts/2021-05-12-greent-how-to/">Part 2</a> of this blog post, where I go into detail on the contribution form, non-interactive Google Sheets authentication, building a dynamic ggplot, programmatically generating color selectors, setting the font, and more.</p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gahm2021,
+  author = {Gahm, Kaija},
+  title = {greenT: {Exploring} Grapheme-Color Synesthesia},
+  date = {2021-05-09},
+  url = {https://kaijagahm.github.io/posts/2021-05-09-greent},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-gahm2021" class="csl-entry quarto-appendix-citeas" role="listitem">
+Gahm, Kaija. 2021. <span>“greenT: Exploring Grapheme-Color
+Synesthesia.”</span> May 9, 2021. <a href="https://kaijagahm.github.io/posts/2021-05-09-greent">https://kaijagahm.github.io/posts/2021-05-09-greent</a>.
+</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+ Copyright 2024, Kaija Gahm
+  </li>  
+</ul>
+    </div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/kaijagahm">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>
