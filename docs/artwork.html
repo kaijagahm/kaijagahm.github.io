@@ -6,11 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Kaija Gahm">
-<meta name="dcterms.date" content="2019-10-12">
-<meta name="description" content="A trick I sometimes use to load a whole bunch of packages for every script in a project, while saving myself some typing. (Preview image from https://towardsdatascience.com/a-comprehensive-list-of-handy-r-packages-e85dad294b3d).">
 
-<title>Kaija Gahm - Loading packages efficiently</title>
+<title>Kaija Gahm - Artwork</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -26,22 +23,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -73,7 +70,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Kaija Gahm</span>
     </a>
   </div>
@@ -84,15 +81,15 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html" rel="" target="">
+    <a class="nav-link" href="./index.html" rel="" target="">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../posts.html" rel="" target="">
+    <a class="nav-link" href="./posts.html" rel="" target="">
  <span class="menu-text">Blog: woodpeckR</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../artwork.html" rel="" target="">
+    <a class="nav-link active" href="./artwork.html" rel="" target="" aria-current="page">
  <span class="menu-text">Artwork</span></a>
   </li>  
 </ul>
@@ -103,128 +100,62 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">Loading packages efficiently</h1>
-                  <div>
-        <div class="description">
-          A trick I sometimes use to load a whole bunch of packages for every script in a project, while saving myself some typing. (Preview image from https://towardsdatascience.com/a-comprehensive-list-of-handy-r-packages-e85dad294b3d).
-        </div>
-      </div>
-                          <div class="quarto-categories">
-                <div class="quarto-category">R</div>
-              </div>
-                  </div>
-  </div>
-    
-  <div class="quarto-title-meta-author">
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-heading">Affiliation</div>
-    
-      <div class="quarto-title-meta-contents">
-      <p class="author"><a href="https://kaijagahm.github.io">Kaija Gahm</a> <a href="https://orcid.org/0000-0002-4612-4426" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
-    </div>
-      <div class="quarto-title-meta-contents">
-          <p class="affiliation">
-              Yale University
-            </p>
-        </div>
-      </div>
-
-  <div class="quarto-title-meta">
-
-        
-      <div>
-      <div class="quarto-title-meta-heading">Published</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date">October 12, 2019</p>
-      </div>
-    </div>
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#problem" id="toc-problem" class="nav-link active" data-scroll-target="#problem">Problem</a></li>
-  <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context">Context</a></li>
-  <li><a href="#solution" id="toc-solution" class="nav-link" data-scroll-target="#solution">Solution</a></li>
-  <li><a href="#outcome" id="toc-outcome" class="nav-link" data-scroll-target="#outcome">Outcome</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content column-page" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Artwork</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<div class="cell">
-<div class="cell-output-display">
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>It surprises me that making art with birdsong spectrograms isn’t more common. They’re so distinctive and pretty.</p>
+<p>These pieces were made in Procreate on iPad. Spectrograms are not to scale; I’ve used them as stamps to create larger art pieces.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="pkgs.png" class="img-fluid figure-img" style="width:130.0%"></p>
-<figcaption class="figure-caption">Image from <a href="https://towardsdatascience.com/a-comprehensive-list-of-handy-r-packages-e85dad294b3d">towards data science</a></figcaption>
+<p><img src="images/GN2.jpg" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption class="figure-caption">“Go nuts” (Clark’s nutcracker; red-breasted nuthatch)</figcaption>
 </figure>
 </div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/BW2.jpg" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption class="figure-caption">“Black and white” (black-and-white warbler)</figcaption>
+</figure>
 </div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/R2.jpg" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption class="figure-caption">“Resonance” (downy woodpecker; northern flicker; hairy woodpecker)</figcaption>
+</figure>
 </div>
-<p><em>This post has been slightly modified from its original form on <a href="https://thewoodpeckr.wordpress.com/2019/10/12/loading-packages-efficiently/">woodpeckR</a>.</em></p>
-<section id="problem" class="level3">
-<h3 class="anchored" data-anchor-id="problem">Problem</h3>
-<p>Especially in a project with many different scripts, it can be challenging to keep track of all the packages you need to load. It’s also easy to lose track of whether or not you’ve incorporated package loading into the script itself until you switch to a new computer or restart R and all of a sudden, your packages need to be re-loaded.</p>
-</section>
-<section id="context" class="level3">
-<h3 class="anchored" data-anchor-id="context">Context</h3>
-<p>When I was first starting out in R, I learned quickly to load packages all together at the top of a script, not along the way as I needed them. But it took a while, until I started using R Projects, before I decided to centralize package loading above the script level. I was sick of having to deal with loading the right packages at the right times, so I decided to just streamline the whole thing.</p>
-</section>
-<section id="solution" class="level3">
-<h3 class="anchored" data-anchor-id="solution">Solution</h3>
-<p>Make a separate R script, called “libraries.R” or “packages.R” or something. Keep it consistent. Mine is always called “libraries,” and I keep it in my project folder.</p>
-<div class="cell">
-<div class="cell-output-display">
-<p><img src="files.png" class="img-fluid" style="width:150.0%"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/WYP2.jpg" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption class="figure-caption">“When you pish” (mountain chickadee)</figcaption>
+</figure>
 </div>
-</div>
-<p>The script looks something like this (individual packages may vary, of course):</p>
-<div class="cell">
-<div class="cell-output-display">
-<p><img src="libraries.png" class="img-fluid" style="width:150.0%"></p>
-</div>
-</div>
-<p>Then, at the top of each analysis script, I can simply source the libraries script, and all the libraries I need load automatically.</p>
-<div class="cell">
-<div class="cell-output-display">
-<p><img src="source.png" class="img-fluid" style="width:150.0%"></p>
-</div>
-</div>
-</section>
-<section id="outcome" class="level3">
-<h3 class="anchored" data-anchor-id="outcome">Outcome</h3>
-<p>I can easily load libraries in the context of a single R Project, keep track of which ones are loaded, and not have to worry about making my scripts look messy with a whole chunk of <code>library()</code> commands at the top of each one. It’s also straightforward to pop open the “libraries” script whenever I want to add a new package or delete one.</p>
 
 
-</section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gahm2019,
-  author = {Gahm, Kaija},
-  title = {Loading Packages Efficiently},
-  date = {2019-10-12},
-  url = {https://kaijagahm.github.io/posts/2019-10-12-loading-packages-efficiently},
-  langid = {en}
-}
-</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-gahm2019" class="csl-entry quarto-appendix-citeas" role="listitem">
-Gahm, Kaija. 2019. <span>“Loading Packages Efficiently.”</span> October
-12, 2019. <a href="https://kaijagahm.github.io/posts/2019-10-12-loading-packages-efficiently">https://kaijagahm.github.io/posts/2019-10-12-loading-packages-efficiently</a>.
-</div></div></section></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

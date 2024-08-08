@@ -1,0 +1,15 @@
+---
+title: "Artwork"
+---
+
+It surprises me that making art with birdsong spectrograms isn't more common. They're so distinctive and pretty.
+
+These pieces were made in Procreate on iPad. Spectrograms are not to scale; I've used them as stamps to create larger art pieces.
+
+!["Go nuts" (Clark's nutcracker; red-breasted nuthatch)](images/GN2.jpg){width=80%}
+
+!["Black and white" (black-and-white warbler)](images/BW2.jpg){width=80%}
+
+!["Resonance" (downy woodpecker; northern flicker; hairy woodpecker)](images/R2.jpg){width=80%}
+
+!["When you pish" (mountain chickadee)](images/WYP2.jpg){width=80%}

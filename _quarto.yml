@@ -10,6 +10,8 @@ website:
         text: Home
       - href: posts.qmd # add your posts.qmd file to your navbar!
         text: 'Blog: woodpeckR'
+      - href: artwork.qmd
+        text: Artwork
   page-footer:
     background: light # or dark
     left:

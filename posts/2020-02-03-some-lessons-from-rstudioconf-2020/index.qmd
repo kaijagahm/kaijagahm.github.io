@@ -8,7 +8,7 @@ author:
     affiliation: Yale University
 date: 02-03-2020
 image: rstudioconf2020.png
-categories: [R, RStudio, conference] # self-defined categories
+categories: [R, RStudio, conference, Posit] # self-defined categories
 citation: 
   url: https://kaijagahm.github.io/posts/2020-02-03-some-lessons-from-rstudioconf-2020
 draft: false
