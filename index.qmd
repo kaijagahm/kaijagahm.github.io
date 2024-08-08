@@ -23,7 +23,7 @@ I advocate for open and reproducible data science and help others to apply these
 
 ## CV
 
-<a href="files/CV for ABS 2024.pdf" download>Download a recent copy of my CV</a>.
+<a href="files/Gahm_CV_2024.pdf" download>Download a recent copy of my CV</a>.
 
 ## Education
 
