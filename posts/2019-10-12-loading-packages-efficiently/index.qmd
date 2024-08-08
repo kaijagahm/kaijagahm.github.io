@@ -10,7 +10,7 @@ date: 10-12-2019
 image: pkgs.png
 categories: [R, tidyverse] # self-defined categories
 citation: 
-  url: https://kaijagahm.github.io/posts/2019-10-12-if-ifelse-had-more-ifs-and-an-else
+  url: https://kaijagahm.github.io/posts/2019-10-12-loading-packages-efficiently
 draft: false
 ---
 
