@@ -1,18 +1,4 @@
----
-title: "(Automatically show output)"
-description: "A neat trick with parentheses to print the contents of an object you just created, without running another line of code."
-author:
-  - name: Kaija Gahm
-    url: https://kaijagahm.github.io
-    orcid: 0000-0002-4612-4426
-    affiliation: Yale University
-date: 07-22-2018
-image: emptyList.jpg
-categories: [R] # self-defined categories
-citation: 
-  url: https://kaijagahm.github.io/posts/2018-07-22-automatically-show-output
-draft: false
----
+
 
 ```{r}
 #| include: false
