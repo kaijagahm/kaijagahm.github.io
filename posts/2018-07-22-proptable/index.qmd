@@ -1,0 +1,85 @@
+---
+title: "prop.table()"
+description: "Making a frequency table with proportions instead of counts. Preview image from https://twitter.com/lyric_rep/status/1010594530435846144."
+author:
+  - name: Kaija Gahm
+    url: https://kaijagahm.github.io
+    orcid: 0000-0002-4612-4426
+    affiliation: Yale University
+date: 07-22-2018
+image: propTable.jpg
+categories: [R] # self-defined categories
+citation: 
+  url: https://kaijagahm.github.io/posts/2018-07-22-proptable
+draft: false
+---
+
+```{r setup}
+#| include: false
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+#| echo: false
+#| fig-cap: "Image from https://twitter.com/lyric_rep/status/1010594530435846144"
+knitr::include_graphics("propTable.jpg")
+```
+
+*This post has been slightly modified from its original form on [woodpeckR](https://thewoodpeckr.wordpress.com/2018/07/22/prop-table/).*
+
+### Problem
+
+How can I convert a frequency table into proportions?
+
+### Context
+
+This is a continuation of the data manipulation discussed in the `with()` post. I had just finished making a table
+
+```{r}
+# Load data from GitHub
+polygon <- read.csv("https://tinyurl.com/rta6hkbo")
+
+# Two-way table by pool and revetment
+with(polygon, table(revetment, pool))
+```
+
+What if I want to see this table broken down by *proportion* of polygons, not counts?
+
+## Solution
+
+The `prop.table()` function will do this nicely.
+
+```{r}
+library(dplyr)
+
+prop <- with(polygon, table(revetment, pool)) %>% 
+  prop.table()
+
+prop
+```
+
+By default, the proportions are calculated over the entire table. So each cell represents the proportion *of all polygons* that are in that pool with that value of revetment. The whole table sums to 1.
+
+If you want proportions across rows or down columns, all you need to do is add the `margin =` argument.
+
+`margin = 1` sums across rows. Each row sums to 1. This would answer the question, "What proportion of the polygons [with, or without] revetment are located in each of the three pools?"
+
+```{r}
+prop.1 <- with(polygon, table(revetment, pool)) %>% 
+  prop.table(margin = 1)
+
+prop.1
+```
+
+`margin = 2` sums down columns. Each column sums to 1. This would answer the question, "What proportion of the polygons in [pool] have revetment? (or, what proportion don't have revetment?)
+
+```{r}
+prop.2 <- with(polygon, table(revetment, pool)) %>% 
+  prop.table(margin = 2)
+
+prop.2
+```
+
+### Outcome
+
+Handy function for creating proportion tables.
