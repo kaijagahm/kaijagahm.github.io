@@ -2,11 +2,21 @@
   {
     "listing": "/posts.html",
     "items": [
+      "/posts/2018-07-22-automatically-show-output/index.html",
       "/posts/2021-10-14-publishing-scrollable-slides-in-rmarkdown/index.html",
       "/posts/2021-05-12-greent-how-to/index.html",
       "/posts/2021-05-09-greent/index.html",
       "/posts/2020-02-10-upping-your-pipe-game/index.html",
-      "/posts/2020-02-03-some-lessons-from-rstudioconf-2020/index.html"
+      "/posts/2020-02-03-some-lessons-from-rstudioconf-2020/index.html",
+      "/posts/2019-11-22-if-ifelse-had-more-ifs-and-an-else/index.html",
+      "/posts/2019-10-12-loading-packages-efficiently/index.html",
+      "/posts/2019-10-11-if-ifelse-had-more-ifs/index.html",
+      "/posts/2019-09-13-initializing-an-empty-list/index.html",
+      "/posts/2018-07-22-proptable/index.html",
+      "/posts/2018-07-20-with/index.html",
+      "/posts/2018-07-11-changing-individual-column-names/index.html",
+      "/posts/2018-07-08-the-notin-operator/index.html",
+      "/posts/2018-07-06-where-are-my-nas/index.html"
     ]
   }
 ]
