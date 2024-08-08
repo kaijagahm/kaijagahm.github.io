@@ -10,7 +10,7 @@ date: 07-20-2018
 image: noPreview.png
 categories: [R] # self-defined categories
 citation: 
-  url: https://kaijagahm.github.io/posts/2018-07-22-automatically-show-output
+  url: https://kaijagahm.github.io/posts/2018-07-20-with
 draft: false
 ---
 
