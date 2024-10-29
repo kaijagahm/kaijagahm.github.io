@@ -1,0 +1,33 @@
+---
+title: "A wrap-around movement path randomization method to distinguish social and spatial drivers of animal interactions"
+description: "How can we distinguish between social attraction and habitat co-occurrence when measuring animal social interactions?"
+author:
+  - name: Kaija Gahm
+    url: https://kaijagahm.github.io
+    orcid: 0000-0002-4612-4426
+    affiliation: UCLA
+date: 12-01-2023
+categories: [R, vultures] # self-defined categories
+image: paths.png
+citation:
+  url: https://kaijagahm.github.io/posts/2023-12-01-wrap-around-vultures
+draft: false
+---
+
+Talk given through the UCLA QCBio Fall 2023 [Research-in-Progress (RIP) Seminar Series](https://qcb.ucla.edu/event/research-in-progress-rip-seminar-kaija-gahm-pinter-wollman-graduate-student-in-ecology-evolutionary-biology/).
+
+### Paper
+
+Read the paper that goes along with this talk [here](https://royalsocietypublishing.org/doi/full/10.1098/rstb.2022.0531).
+
+### Video
+
+{{< video https://www.youtube.com/watch?v=zkXOBpkKD7M&ab_channel=Inst.forQuantitative%26ComputationalBiosciences >}}
+
+### Slides
+
+<iframe src="https://docs.google.com/presentation/d/1l9e37F9K3dTti2HMP2EfCTS9cdHg84hEtuf0d45g-V8/embed?start=false&loop=false&delayms=3000" frameborder="0" width="800" height="600" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
+### Abstract
+*Studying the spatial–social interface requires tools that distinguish between social and spatial drivers of interactions. Testing hypotheses about the factors determining animal interactions often involves comparing observed interactions with reference or ‘null’ models. One approach to accounting for spatial drivers of social interactions in reference models is randomizing animal movement paths to decouple spatial and social phenotypes while maintaining environmental effects on movements. Here, we update a reference model that detects social attraction above the effect of spatial constraints. We explore the use of our ‘wrap-around’ method and compare its performance to the previous approach using agent-based simulations. The wrap-around method provides reference models that are more similar to the original tracking data, while still distinguishing between social and spatial drivers. Furthermore, the wrap-around approach results in fewer false-positives than its predecessor, especially when animals do not return to one place each night but change movement foci, either locally or directionally. Finally, we show that interactions among GPS-tracked griffon vultures (Gyps fulvus) emerge from social attraction rather than from spatial constraints on their movements. We conclude by highlighting the biological situations in which the updated method might be most suitable for testing hypotheses about the underlying causes of social interactions.*
+

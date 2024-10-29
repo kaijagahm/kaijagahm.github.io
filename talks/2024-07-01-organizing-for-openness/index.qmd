@@ -1,0 +1,21 @@
+---
+title: "Organizing for Openness: A student's perspective on reproducibility efforts in Eco-Evo"
+description: "How can we apply principles learned from union organizing toward organizing for change in open science? What has SORTEE done to further these goals, and what can we do at our own institutions?"
+author:
+  - name: Kaija Gahm
+    url: https://kaijagahm.github.io
+    orcid: 0000-0002-4612-4426
+    affiliation: UCLA
+date: 2024-07-30
+categories: [SORTEE, union, open science] # self-defined categories
+image: three-principles.png
+citation:
+  url: https://kaijagahm.github.io/posts/2024-07-30-organizing-for-openness
+draft: false
+---
+
+Talk given as part of a symposium at Evolution 2024 (Montreal, QC, Canada):  [Replicability and Reproducibility in Ecological and Evolutionary Research](https://www.youtube.com/watch?v=M9AFLSsExd4). I gave this talk in my capacity as Secretary for [SORTEE](sortee.org), the Society for Open, Reliable, and Transparent Ecology & Evolutionary Biology; and as a graduate student.
+
+### Video
+
+{{< video https://www.youtube.com/watch?v=M9AFLSsExd4&ab_channel=EvolutionMeetings&t=12m03s >}}

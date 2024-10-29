@@ -8,8 +8,12 @@ website:
     left:
       - href: index.qmd
         text: Home
+      - href: talks.qmd
+        text: Talks
       - href: posts.qmd # add your posts.qmd file to your navbar!
         text: 'Blog: woodpeckR'
+      - href: projects.qmd
+        text: Projects
       - href: artwork.qmd
         text: Artwork
   page-footer:
