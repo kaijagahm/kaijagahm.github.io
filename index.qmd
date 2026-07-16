@@ -10,7 +10,13 @@ about:
     - text: GitHub
       href: https://github.com/kaijagahm
     - text: Email
-      href: mailto:kgahm@ucla.edu
+      href: mailto:kaija.gahm@gmail.com
+    - text: LinkedIn
+      href: https://www.linkedin.com/in/kaija-gahm-205890167/
+    - text: Google Scholar
+      href: https://scholar.google.com/citations?user=YwDIUREAAAAJ&hl=en
+    - text: ORCID
+      href: https://orcid.org/0000-0002-4612-4426
 ---
 
 ## Bio
@@ -41,4 +47,4 @@ I advocate for open and reproducible data science and help others to apply these
 
 ## Contact
 
-I'd love to hear from you! You can find me online using the links to the left, or email me at **kgahm [at] ucla.edu**.
+I'd love to hear from you! You can find me online using the links to the left, or email me at **kaija.gahm [at] gmail.com**.
