@@ -1,11 +1,14 @@
 ---
 title: "RRRRR, I'm stuck!"
-output: html_document
 description: |
   A Carpentries lesson about getting unstuck in R through the process of making minimal reproducible examples ("reprexes")
 author:
   - name: Kaija Gahm
-date: 07-01-2026
+    url: {}
+date: 2026-07-01
+output:
+  distill::distill_article:
+    self_contained: false
 preview: merriams_krat.png
 ---
 
