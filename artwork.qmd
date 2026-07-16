@@ -4,10 +4,10 @@ title: "Artwork"
 
 It surprises me that making art with birdsong spectrograms isn't more common; they're so distinctive and pretty. These pieces were made in Procreate on iPad. Spectrograms are not to scale; I've used them as stamps to create larger art pieces.
 
-![Black and white artwork composed of shapes derived from bird call spectrograms for Clark's nutcracker and red-breasted nuthatch.](images/GN2.jpg){width=80% fig-align="left"}
+![](images/GN2.jpg){width=80% fig-align="left" fig-alt="Black and white artwork composed of shapes derived from bird call spectrograms for Clark's nutcracker and red-breasted nuthatch."}
 
-![Black and white artwork composed of shapes derived from bird call spectrograms for black-and-white warbler.](images/BW2.jpg){width=80% fig-align="left"}
+![](images/BW2.jpg){width=80% fig-align="left" fig-alt="Black and white artwork composed of shapes derived from bird call spectrograms for black-and-white warbler."}
 
-![Black and white artwork composed of shapes derived from bird call spectrograms for downy woodpecker, northern flicker, and hairy woodpecker.](images/R2.jpg){width=80% fig-align="left"}
+![](images/R2.jpg){width=80% fig-align="left" fig-alt="Black and white artwork composed of shapes derived from bird call spectrograms for downy woodpecker, northern flicker, and hairy woodpecker."}
 
-![Black and white artwork composed of shapes derived from bird call spectrograms for Clark's nutcracker and mountain chickadee.](images/WYP2.jpg){width=80% fig-align="left"}
+![](images/WYP2.jpg){width=80% fig-align="left" fig-alt="Black and white artwork composed of shapes derived from bird call spectrograms for Clark's nutcracker and mountain chickadee."}

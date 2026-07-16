@@ -42,7 +42,7 @@ for(i in 1:nrow(input)){
   currentSlide <- input[i, ] # for convenience, make a temp object with the row corresponding to the current slide
   # Extract first ~100 characters of description for alt text (removing HTML tags)
   altText <- sub("<br>.*", "", currentSlide$slideDescription)
-  cat(paste0("![", altText, "](", currentSlide$slideImage, ")"))
+  cat(paste0("![](", currentSlide$slideImage, "){fig-alt=\"", altText, "\"}"))
   cat(currentSlide$slideDescription)
   cat("<br><br><br>") # make sure there's plenty of space
 }

@@ -16,7 +16,7 @@ preview: tadpole.png
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-![Watercolor illustration of a wood frog tadpole. Artwork by Bayla Arietta.](tadpole.png)
+![](tadpole.png){fig-alt="Watercolor illustration of a wood frog tadpole. Artwork by Bayla Arietta."}
 
 ### Introduction
 For my senior (B.S.) thesis in E&EB at Yale, I studied a tradeoff between growth rate and swimming performance in wood frog tadpoles.
