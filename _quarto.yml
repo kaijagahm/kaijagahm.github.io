@@ -19,7 +19,7 @@ website:
   page-footer:
     background: light # or dark
     left:
-      - "Copyright 2024, Kaija Gahm"
+      - "Copyright 2026, Kaija Gahm"
     right:
       - icon: github
         href: https://github.com/kaijagahm

@@ -8,14 +8,14 @@ about:
   image-width: 20em
   links:
     - text: GitHub
-      href: github.com/kaijagahm
+      href: https://github.com/kaijagahm
     - text: Email
       href: mailto:kgahm@ucla.edu
 ---
 
 ## Bio
 
-I am a biologist and data scientist. Currently, I'm studying the social behavior and movement ecology of griffon vultures in the [Pinter-Wollman Lab](https://pinterwollmanlab.eeb.ucla.edu/). Previously, I was a data manager at the Cary Institute and a research assistant with the [Yale Grammatical Diversity Project](https://ygdp.yale.edu/). I've written about my work with each of these organizations: [Cary](https://kaijagahm.netlify.app/projects/2021-07-13-retroactivelyreproducible/) \| [YGDP](https://kaijagahm.netlify.app/projects/2021-02-05-ygdp-dashboard/).
+I am a biologist and data scientist. Currently, I'm studying the social behavior and movement ecology of griffon vultures in the [Pinter-Wollman Lab](https://pinterwollmanlab.eeb.ucla.edu/). Previously, I was a data manager at the Cary Institute and a research assistant with the [Yale Grammatical Diversity Project](https://ygdp.yale.edu/). I've written about my work with each of these organizations: [Cary](https://kaijagahm.github.io/projects/2021-07-13-retroactivelyreproducible/) \| [YGDP](https://kaijagahm.github.io/projects/2021-02-05-ygdp-dashboard/).
 
 I did my B.S. in EEB at Yale, where I studied physiological tradeoffs in wood frog tadpoles ([talk](https://drive.google.com/file/d/1S57rDgoKSm0I4ssGYlKlMgnDmXNs58aR/view?usp=sharing) | <a href="files/Gahm_etal_2020.pdf" download>paper</a>).
 
@@ -27,7 +27,7 @@ I advocate for open and reproducible data science and help others to apply these
 
 ## Education
 
-**University of California, Los Angeles** \| Los Angeles, CA Ph.D. Student in Ecology & Evolutionary Biology \| September 2021 - Present. NSF Graduate Research Fellow 2023; UCLA Graduate Dean's Research Fellow 2021.
+**University of California, Los Angeles** \| Los Angeles, CA Ph.D. Student in Ecology & Evolutionary Biology \| September 2021 - Present. NSF Graduate Research Fellow; UCLA Graduate Dean's Research Fellow.
 
 **Yale University** \| New Haven, CT \| B.S. in Ecology & Evolutionary Biology \| September 2016 - May 2020
 
