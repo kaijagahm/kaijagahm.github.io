@@ -16,6 +16,8 @@ preview: tadpole.png
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
+![](tadpole.png)
+
 ### Introduction
 For my senior (B.S.) thesis in E&EB at Yale, I studied a tradeoff between growth rate and swimming performance in wood frog tadpoles.
 

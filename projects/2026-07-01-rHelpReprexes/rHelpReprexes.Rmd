@@ -12,6 +12,8 @@ output:
 preview: merriams_krat.jpg
 ---
 
+![](merriams_krat.jpg)
+
 In collaboration with [Xochitl Ortiz Ross](https://www.linkedin.com/in/xochitl-ortiz-ross) and [Peter Laurin](https://peterlaurin.github.io/), I developed a draft of a new Carpentries lesson. This lesson was born as a product of The Carpentries [Collaborative Lesson Development Training](https://carpentries.org/lesson-development/) in 2025.
 
 "RRRRR, I'm stuck!" is a lesson for beginner R coders in (ecological) data science. This lesson will teach how to identify and resolve problematic code by using minimal reproducible examples to ask for help from the community. While this lesson should be appropriate for all levels, it is merely a supplement and not a replacement for an intro to R lesson. As such, this lesson assumes a basic understanding of data structures, manipulation, and visualization in R. Familiarity with the tidyverse package is helpful but not required. An example of an introductory lesson that covers all pre-requisites is The Carpentries' Data Analysis and Visualization in R for Ecologists.
