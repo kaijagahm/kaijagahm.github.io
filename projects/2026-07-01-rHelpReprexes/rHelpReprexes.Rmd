@@ -12,7 +12,7 @@ output:
 preview: merriams_krat.jpg
 ---
 
-![](merriams_krat.jpg)
+![Photograph of a Merriam's kangaroo rat, from Wikimedia Commons.](merriams_krat.jpg)
 
 In collaboration with [Xochitl Ortiz Ross](https://www.linkedin.com/in/xochitl-ortiz-ross) and [Peter Laurin](https://peterlaurin.github.io/), I developed a draft of a new Carpentries lesson. This lesson was born as a product of The Carpentries [Collaborative Lesson Development Training](https://carpentries.org/lesson-development/) in 2025.
 
