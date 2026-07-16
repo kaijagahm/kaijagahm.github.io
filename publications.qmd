@@ -28,25 +28,25 @@ engine: knitr
 ::: {.publication}
 **Gahm, K.**, D'Bastiani, E., Anglister, N., Vaadia, G., Acácio, M., Spiegel, O., & Pinter-Wollman, N. (2026). Selection of timescales to study social network temporal dynamics in vultures. Animal Behaviour, 232, 123442. <https://doi.org/10.1016/j.anbehav.2025.123442>
 
-[**Download PDF**](publications/Gahm%20et%20al.-2026-Selection%20of%20timescales%20to%20study%20social%20network%20te.pdf)
+<a href="publications/Gahm et al.-2026-Selection of timescales to study social network te.pdf" download>**Download PDF**</a>
 :::
 
 ::: {.publication}
 **Gahm, K.**, Spiegel, O., & Pinter-Wollman, N. (2026). How are social preferences realized? Considering the importance of space: A comment on De Moor et al. (2025). Behavioral Ecology, arag065. <https://doi.org/10.1093/beheco/arag065>
 
-[**Download PDF**](publications/Gahm%20et%20al.-2026-How%20are%20social%20preferences%20realized%20Considering%20t.pdf)
+<a href="publications/Gahm et al.-2026-How are social preferences realized Considering t.pdf" download>**Download PDF**</a>
 :::
 
 ::: {.publication}
 Russo, N. J., **Gahm, K.**, Zuercher, M. E., Hernandez, K., Blakey, R. V., Niesner, C., & Abelson, E. (2026). Monitoring animal movement diversity as a component of biodiversity. Frontiers in Ecology and the Environment, e70038. <https://doi.org/10.1002/fee.70038>
 
-[**Download PDF**](publications/Russo%20et%20al.-Monitoring%20animal%20movement%20diversity%20as%20a%20componen.pdf)
+<a href="publications/Russo et al.-Monitoring animal movement diversity as a componen.pdf" download>**Download PDF**</a>
 :::
 
 ::: {.publication}
 Amin, N., Barnes, K., Crall, A., **Gahm, K.**, Newman, S., Sutton-Kennedy, T., & Word, K. (2026). Community Organizing for STEM Professionals. QUBES Educational Resources. <https://doi.org/10.25334/VWRN-8M23>
 
-[**Download PDF**](publications/CommunityOrganizingHandbookForSTEMProfessionals-citation-29645.pdf)
+<a href="publications/CommunityOrganizingHandbookForSTEMProfessionals-citation-29645.pdf" download>**Download PDF**</a>
 :::
 
 ::: {.publication}
@@ -56,41 +56,41 @@ Amin, N., Barnes, K., Crall, A., **Gahm, K.**, Newman, S., Sutton-Kennedy, T., &
 ::: {.publication}
 Acácio, M., **Gahm, K.**, Anglister, N., Vaadia, G., Hatzofe, O., Harel, R., Efrat, R., Nathan, R., Pinter-Wollman, N., & Spiegel, O. (2024). Behavioral plasticity shapes population aging patterns in a long-lived avian scavenger. Proceedings of the National Academy of Sciences, 121(35), e2407298121. <https://doi.org/10.1073/pnas.2407298121>
 
-[**Download PDF**](publications/Acácio%20et%20al.-2024-Behavioral%20plasticity%20shapes%20population%20aging%20patt.pdf)
+<a href="publications/Acácio et al.-2024-Behavioral plasticity shapes population aging patt.pdf" download>**Download PDF**</a>
 :::
 
 ::: {.publication}
 D'Bastiani, E., Anglister, N., Lysnyansky, I., Mikula, I., Acácio, M., Vaadia, G., **Gahm, K.**, Spiegel, O., & Pinter-Wollman, N. (2024). Social interactions do not affect mycoplasma infection in griffon vultures. Royal Society Open Science, 11(12), 240500. <https://doi.org/10.1098/rsos.240500>
 
-[**Download PDF**](publications/D'Bastiani%20et%20al.-Social%20interactions%20do%20not%20affect%20mycoplasma%20infec.pdf)
+<a href="publications/D'Bastiani et al.-Social interactions do not affect mycoplasma infec.pdf" download>**Download PDF**</a>
 :::
 
 ::: {.publication}
 **Gahm, K.**, Nguyen, R., Acácio, M., Anglister, N., Vaadia, G., Spiegel, O., & Pinter-Wollman, N. (2024). A wrap-around movement path randomization method to distinguish social and spatial drivers of animal interactions. Philosophical Transactions of the Royal Society B: Biological Sciences, 379(1912), 20220531. <https://doi.org/10.1098/rstb.2022.0531>
 
-[**Download PDF**](publications/Gahm%20et%20al.-2024-A%20wrap-around%20movement%20path%20randomization%20method%20t.pdf)
+<a href="publications/Gahm et al.-2024-A wrap-around movement path randomization method t.pdf" download>**Download PDF**</a>
 :::
 
 ::: {.publication}
 Van Appledorn, M., Jankowski, K., **Gahm, K.**, Budd, S., Baumann, D., Bennie, B., Erickson, R., Haro, R., & Rohweder, J. (2024). The where and why of large wood occurrence in the Upper Mississippi and Illinois Rivers. Earth Surface Processes and Landforms, n/a(n/a). <https://doi.org/10.1002/esp.5911>
 
-[**Download PDF**](publications/Van%20Appledorn%20et%20al.-2024-The%20where%20and%20why%20of%20large%20wood%20occurrence%20in%20the.pdf)
+<a href="publications/Van Appledorn et al.-2024-The where and why of large wood occurrence in the.pdf" download>**Download PDF**</a>
 :::
 
 ::: {.publication}
 Venable, G. X., **Gahm, K.**, & Prum, R. O. (2022). Hummingbird plumage color diversity exceeds the known gamut of all other birds. Communications Biology, 5(1), Article 1. <https://doi.org/10.1038/s42003-022-03518-2>
 
-[**Download PDF**](publications/Venable%20et%20al.-2022-Hummingbird%20plumage%20color%20diversity%20exceeds%20the%20kn.pdf)
+<a href="publications/Venable et al.-2022-Hummingbird plumage color diversity exceeds the kn.pdf" download>**Download PDF**</a>
 :::
 
 ::: {.publication}
 Bishop, C. E., **Gahm, K.**, Hendry, A. P., Jones, S. E., Stange, M., & Solomon, C. T. (2022). Benthic–limnetic morphological variation in fishes: Dissolved organic carbon concentration produces unexpected patterns. Ecosphere, 13(3), e3965. <https://doi.org/10.1002/ecs2.3965>
 
-[**Download PDF**](publications/Bishop%20et%20al.-2022-Benthic–limnetic%20morphological%20variation%20in%20fishes.pdf)
+<a href="publications/Bishop et al.-2022-Benthic–limnetic morphological variation in fishes.pdf" download>**Download PDF**</a>
 :::
 
 ::: {.publication}
 **Gahm, K.**, Arietta, A. Z. A., & Skelly, D. K. (2021). Temperature-mediated trade-off between development and performance in larval wood frogs (Rana sylvatica). Journal of Experimental Zoology Part A: Ecological and Integrative Physiology, 335(1), 146–157. <https://doi.org/10.1002/jez.2434>
 
-[**Download PDF**](publications/Gahm%20et%20al.-2021-Temperature-mediated%20trade-off%20between%20development.pdf)
+<a href="publications/Gahm et al.-2021-Temperature-mediated trade-off between development.pdf" download>**Download PDF**</a>
 :::
