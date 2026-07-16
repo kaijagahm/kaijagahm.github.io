@@ -5,7 +5,6 @@
 
 **/*.quarto_ipynb
 
-# PDFs and generated files
+# PDFs
 publications/*.pdf
-docs/
 _freeze/
