@@ -53,7 +53,7 @@ Russo, N. J., **Gahm, K.**, Zuercher, M. E., Hernandez, K., Blakey, R. V., Niesn
 <a href="publications/Russo et al.-Monitoring animal movement diversity as a componen.pdf" download>**Download PDF**</a>
 
 ![Figure 1. A framework for metrics that can be used to quantify animal movement diversity, from the level of an individual animal to a community, with
-example visualizations and research questions.](images/movementdiversity_reflist_fig.png.png){fig-alt="Figure from the publication, showing a conceptual representation of movement diversity at different scales."}
+example visualizations and research questions.](images/movementdiversity_reflist_fig.png){fig-alt="Figure from the publication, showing a conceptual representation of movement diversity at different scales."}
 :::
 
 ::: {.publication}
