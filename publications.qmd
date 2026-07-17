@@ -26,9 +26,19 @@ engine: knitr
 ```
 
 ::: {.publication}
+**Gahm, K.**, Acácio, M., Anglister, N., Vaadia, G., Spiegel, O., & Pinter-Wollman, N. (In press). Relationship between spatial and social phenotypes in an avian scavenger. Journal of Animal Ecology. <https://doi.org/10.1111/1365-2656.70316>
+:::
+
+::: {.publication}
 **Gahm, K.**, D'Bastiani, E., Anglister, N., Vaadia, G., Acácio, M., Spiegel, O., & Pinter-Wollman, N. (2026). Selection of timescales to study social network temporal dynamics in vultures. Animal Behaviour, 232, 123442. <https://doi.org/10.1016/j.anbehav.2025.123442>
 
 <a href="publications/Gahm et al.-2026-Selection of timescales to study social network te.pdf" download>**Download PDF**</a>
+
+![Figure 3. Multilayer reducibility curves at different aggregation window sizes. Feeding (yellow) and flight (blue) social networks for the postbreeding season in 2023. Each panel
+shows a different timescale: (a) 1 day, (b) 5 days, (c) 10 days and (d) 25 days. The Y axis shows the Von Neumann relative entropy of the current reduced multilayer network
+compared to the fully aggregated network, normalized to the maximum value for each curve; the X axis shows how many layers have been aggregated. The dotted black line
+represents the hypothetical linear decrease in entropy that is expected if each layer contributed exactly the same amount of information.](images/timescales_reflist_fig.png){fig-alt="Figure from the publication, showing multilayer aggregation results for flight and feeding networks."}
+
 :::
 
 ::: {.publication}
@@ -41,6 +51,9 @@ engine: knitr
 Russo, N. J., **Gahm, K.**, Zuercher, M. E., Hernandez, K., Blakey, R. V., Niesner, C., & Abelson, E. (2026). Monitoring animal movement diversity as a component of biodiversity. Frontiers in Ecology and the Environment, e70038. <https://doi.org/10.1002/fee.70038>
 
 <a href="publications/Russo et al.-Monitoring animal movement diversity as a componen.pdf" download>**Download PDF**</a>
+
+![Figure 1. A framework for metrics that can be used to quantify animal movement diversity, from the level of an individual animal to a community, with
+example visualizations and research questions.](images/movementdiversity_reflist_fig.png.png){fig-alt="Figure from the publication, showing a conceptual representation of movement diversity at different scales."}
 :::
 
 ::: {.publication}
@@ -50,13 +63,13 @@ Amin, N., Barnes, K., Crall, A., **Gahm, K.**, Newman, S., Sutton-Kennedy, T., &
 :::
 
 ::: {.publication}
-**Gahm, K.**, Acácio, M., Anglister, N., Vaadia, G., Spiegel, O., & Pinter-Wollman, N. (In press). Relationship between spatial and social phenotypes in an avian scavenger. Journal of Animal Ecology. <https://doi.org/10.1111/1365-2656.70316>
-:::
-
-::: {.publication}
 Acácio, M., **Gahm, K.**, Anglister, N., Vaadia, G., Hatzofe, O., Harel, R., Efrat, R., Nathan, R., Pinter-Wollman, N., & Spiegel, O. (2024). Behavioral plasticity shapes population aging patterns in a long-lived avian scavenger. Proceedings of the National Academy of Sciences, 121(35), e2407298121. <https://doi.org/10.1073/pnas.2407298121>
 
 <a href="publications/Acácio et al.-2024-Behavioral plasticity shapes population aging patt.pdf" download>**Download PDF**</a>
+
+![Fig. 3. Age-related
+changes in movement and social behavior of griffon vultures. Each panel A–F represents the model predictions, backtransformed to the
+original data scale, and the 95% CI for the effect of age on movement (A–C) and social behaviors (D–F): (A) probability of remaining at the same roost-site on consecutive nights (roost fidelity)](images/vultureage_reflist_fig.png){fig-alt="Figure from the publication, showing a nonlinear positive relationship between vulture age and probability of roost fidelity."}
 :::
 
 ::: {.publication}
@@ -93,4 +106,9 @@ Bishop, C. E., **Gahm, K.**, Hendry, A. P., Jones, S. E., Stange, M., & Solomon,
 **Gahm, K.**, Arietta, A. Z. A., & Skelly, D. K. (2021). Temperature-mediated trade-off between development and performance in larval wood frogs (Rana sylvatica). Journal of Experimental Zoology Part A: Ecological and Integrative Physiology, 335(1), 146–157. <https://doi.org/10.1002/jez.2434>
 
 <a href="publications/Gahm et al.-2021-Temperature-mediated trade-off between development.pdf" download>**Download PDF**</a>
+
+![FIGURE 3 Relationship between development rate and burst speed for (a) lab tadpoles and (b) wild tadpoles. Dots represent pond‐wise
+means, and in (a), lines connect means from the same pond. Marginal density plots are based on individual tadpoles rather than pond‐wise
+means. Orange and blue represent tadpoles reared in the high‐ and low‐temperature incubators, respectively [Color figure can be viewed at
+wileyonlinelibrary.com]](images/burstspeed_reflist_fig.png){fig-alt="Figure from the publication, showing a negative relationship between burst speed and developmental rate."}
 :::
