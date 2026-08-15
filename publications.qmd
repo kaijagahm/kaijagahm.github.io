@@ -25,8 +25,10 @@ engine: knitr
 }
 ```
 
+<!-- CITATIONS ARE IN APA STYLE! -->
+
 ::: {.publication}
-**Gahm, K.**, Acácio, M., Anglister, N., Vaadia, G., Spiegel, O., & Pinter-Wollman, N. (In press). Relationship between spatial and social phenotypes in an avian scavenger. Journal of Animal Ecology. <https://doi.org/10.1111/1365-2656.70316>
+Gahm, K., Acácio, M., Anglister, N., Vaadia, G., Spiegel, O., & Pinter-Wollman, N. (n.d.). Relationship between spatial and social phenotypes in an avian scavenger. Journal of Animal Ecology. <https://doi.org/10.1111/1365-2656.70316>
 :::
 
 ::: {.publication}
