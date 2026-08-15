@@ -16,6 +16,8 @@ website:
         text: Projects
       - href: posts.qmd # add your posts.qmd file to your navbar!
         text: 'Blog: woodpeckR'
+      - href: consulting.qmd
+        text: Consulting
   page-footer:
     background: light # or dark
     left:

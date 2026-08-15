@@ -217,6 +217,34 @@
     "text": "This post has been slightly modified from its original form on woodpeckR.\n\nProblem\nI keep forgetting how to select all elements of an object except a few, by name. I get the ! operator confused with the - operator, and I find both of them less than intuitive to use. How can I negate the %in% operator?\n\n\nContext\nI have a data frame called electrofishing that contains observations from a fish sampling survey. One column, stratum, gives the aquatic habitat type of the sampling site. I’d like to exclude observations sampled in the “Tailwater Zone” or “Impounded-Offshore” aquatic habitats.\n\nelectrofishing &lt;- data.frame(stratum = c(\"Tailwater Zone\", \"Tailwater Zone\", \"Impounded\", \"Main Channel Border\", \"Side Channel\", \"Impounded-Offshore\", \"Side Channel\"), \n                             idx = 1:7)\n\nelectrofishing\n\n              stratum idx\n1      Tailwater Zone   1\n2      Tailwater Zone   2\n3           Impounded   3\n4 Main Channel Border   4\n5        Side Channel   5\n6  Impounded-Offshore   6\n7        Side Channel   7\n\n\nMy instinct would be to do this:\n\nelectrofishing &lt;- electrofishing[electrofishing$stratum !%in% \n                                   c(\"Tailwater Zone\", \"Impounded-Offshore\"),]\n\nError: &lt;text&gt;:1:57: unexpected '!'\n1: electrofishing &lt;- electrofishing[electrofishing$stratum !\n                                                            ^\n\n\nBut that doesn’t work. You can’t negate the %in% operator directly. Instead, you have to wrap the %in% statement in parentheses and negate the entire statement, returning the opposite of the original boolean vector:\n\nelectrofishing &lt;- electrofishing[!(electrofishing$stratum %in% \n                                     c(\"Tailwater Zone\", \"Impounded-Offshore\")),]\n\nI’m not saying this doesn’t make sense, but I can never remember it. My English-speaking brain would much rather say “rows whose stratum is not included in c(”Tailwater Zone”, “Impounded-Offshore”)” than “not rows whose stratum is included in c(”Tailwater Zone”, “Impounded-Offshore”)“.\n\n\nSolution\nLuckily, it’s pretty easy to negate %in% and create a %notin% operator. I credit this answer to user “catastrophic-failure” on this Stack Overflow question.\n\n`%notin%` &lt;- Negate(`%in%`)\n\nI didn’t even know that the Negate function existed. The more you know.\n\n\nOutcome\nI know there are lots of ways to negate selections in R. dplyr has select() and filter() functions that are easier to use with -c(). Or I could just learn to throw a ! in front of my %in% statements. But %notin% seems a little more intuitive.\nNow it’s straightforward to select these rows from my data frame.\n\nelectrofishing &lt;- electrofishing[electrofishing$stratum %notin% \n                                   c(\"Tailwater Zone\", \"Impounded-Offshore\"),]\n\n\n\nResources\nhttps://stackoverflow.com/questions/38351820/negation-of-in-in-r\nThis one does a good job of explaining why !%in% doesn’t work.\n\n\n\n\nCitationBibTeX citation:@online{gahm2018,\n  author = {Gahm, Kaija},\n  title = {The \\%Notin\\% Operator},\n  date = {2018-07-08},\n  url = {https://kaijagahm.github.io/posts/2018-07-08-the-notin-operator},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nGahm, Kaija. 2018. “The %Notin% Operator.” July 8. https://kaijagahm.github.io/posts/2018-07-08-the-notin-operator."
   },
   {
+    "objectID": "consulting.html",
+    "href": "consulting.html",
+    "title": "Consulting",
+    "section": "",
+    "text": "Building data science skill capacity for research teams is some of the most rewarding work that I do. I am particularly knowledgeable about open science and reproducible workflows, data and project management for research teams, version control, and data wrangling. I combine extensive research experience in ecology with 10+ years of data science experience and training in evidence-based pedagogy to bridge the gap between technical skills and the practical needs of research teams.\nTo discuss potential projects and rates, email me at kaija.gahm@gmail.com."
+  },
+  {
+    "objectID": "consulting.html#working-with-me",
+    "href": "consulting.html#working-with-me",
+    "title": "Consulting",
+    "section": "",
+    "text": "Building data science skill capacity for research teams is some of the most rewarding work that I do. I am particularly knowledgeable about open science and reproducible workflows, data and project management for research teams, version control, and data wrangling. I combine extensive research experience in ecology with 10+ years of data science experience and training in evidence-based pedagogy to bridge the gap between technical skills and the practical needs of research teams.\nTo discuss potential projects and rates, email me at kaija.gahm@gmail.com."
+  },
+  {
+    "objectID": "consulting.html#certifications-and-training",
+    "href": "consulting.html#certifications-and-training",
+    "title": "Consulting",
+    "section": "Certifications and training",
+    "text": "Certifications and training\nI’ve sought out a variety of opportunities to study and practice evidence-based pedagogy. I believe in inclusive teaching that takes into account motivation and cognitive load to move learners from fear to self-efficacy in coding and data science.\n\nThe Carpentries\n\nCollaborative Lesson Development Training (2024)\n\nCurriculum in development: “RRRRR, I’m stuck! Minimal reproducible examples in R”\n\nInstructor Trainer Certification (2024)\nInstructor Certification (2021)"
+  },
+  {
+    "objectID": "consulting.html#past-consulting-and-training-work",
+    "href": "consulting.html#past-consulting-and-training-work",
+    "title": "Consulting",
+    "section": "Past consulting and training work",
+    "text": "Past consulting and training work\n\nI’m helping the SPACES Institute set up their workflow and project organization as they study biodiversity using remote sensing data (2026).\n\nI taught Data Analysis and Visualization in R for Ecologists for the team at the St. Louis Zoo (2023)."
+  },
+  {
     "objectID": "posts/2021-05-12-greent-how-to/index.html",
     "href": "posts/2021-05-12-greent-how-to/index.html",
     "title": "greenT part 2: Behind the app",
