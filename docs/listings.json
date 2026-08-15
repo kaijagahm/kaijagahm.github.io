@@ -20,20 +20,21 @@
     ]
   },
   {
+    "listing": "/talks.html",
+    "items": [
+      "/talks/2024-07-01-organizing-for-openness/index.html",
+      "/talks/2023-12-01-wrap-around-vultures/index.html"
+    ]
+  },
+  {
     "listing": "/projects.html",
     "items": [
+      "/projects/2026-08-01-artwork/artwork.html",
       "/projects/2026-07-01-rHelpReprexes/rHelpReprexes.html",
       "/projects/2021-07-13-retroactivelyReproducible/retroactivelyReproducible.html",
       "/projects/2021-05-13-greenT/greenT.html",
       "/projects/2021-02-05-ygdp-dashboard/ygdp-dashboard.html",
       "/projects/2021-01-29-tadpoles/tadpoles.html"
-    ]
-  },
-  {
-    "listing": "/talks.html",
-    "items": [
-      "/talks/2024-07-01-organizing-for-openness/index.html",
-      "/talks/2023-12-01-wrap-around-vultures/index.html"
     ]
   }
 ]
